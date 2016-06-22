@@ -1,0 +1,15 @@
+#ifndef ROOM_H
+#define ROOM_H
+
+
+struct Room
+{
+
+    Room();
+    int id;
+    int nmb_of_chairs;
+    
+    
+};
+
+#endif // ROOM_H
