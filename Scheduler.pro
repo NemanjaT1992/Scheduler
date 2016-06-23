@@ -11,7 +11,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Scheduler
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
         mainwindow.cpp \
     chromosome.cpp \
@@ -19,6 +18,10 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     chromosome.h \
-    time_table.h
+    time_table.h \
+    room.h \
+    class.h
 
 FORMS    += mainwindow.ui
+
+CONFIG += c++14
