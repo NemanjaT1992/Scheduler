@@ -13,8 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    chromosome.cpp \
+    time_table.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    chromosome.h \
+    time_table.h
 
 FORMS    += mainwindow.ui
