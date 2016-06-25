@@ -2,9 +2,13 @@
 #define MUTATOR_H
 
 #include "chromosome.h"
+#include "random_generator.h"
 
 class mutator
 {
+private:
+    random_generator random;
+
 public:
     mutator();
 

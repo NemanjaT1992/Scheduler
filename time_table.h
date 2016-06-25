@@ -15,7 +15,7 @@ struct class_data
     int8_t day;
     int8_t time;
     int8_t course;
-    int8_t total;
+    int8_t count;
     int8_t room;
     int8_t student_group;
 };

@@ -19,6 +19,7 @@ public:
     constraint& operator=(constraint&& other);
 
     double evaluate(chromosome& c);
+    double operator()(chromosome& c);
 };
 
 #endif // CONSTRAINT_H

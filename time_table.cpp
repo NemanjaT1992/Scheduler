@@ -2,7 +2,6 @@
 
 time_table::time_table()
 {
-    table.resize(5 * constants::hours);
 }
 
 time_table::time_table(const time_table& other)

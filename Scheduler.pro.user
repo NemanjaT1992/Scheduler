@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 4.0.2, 2016-06-25T00:06:10. -->
-<qtcreator>
- <data>
-  <variable>EnvironmentId</variable>
-  <value type="QByteArray">{0f600beb-8daf-4ead-a1c4-2206611100aa}</value>
-=======
-<!-- Written by QtCreator 4.0.2, 2016-06-25T02:32:02. -->
+<!-- Written by QtCreator 4.0.2, 2016-06-25T05:48:29. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
   <value type="QByteArray">{24186a2e-8d16-4158-8ddd-6ac56828baff}</value>
->>>>>>> ece6d670176812c96b1497ddf649d1c7cfe1b71e
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -293,8 +285,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Scheduler</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Scheduler2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Milan/Desktop/IS/Scheduler/Scheduler/Scheduler.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Milos/Documents/Qt Projects/Scheduler/Scheduler.pro</value>
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">Scheduler.pro</value>
