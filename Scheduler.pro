@@ -14,13 +14,18 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     chromosome.cpp \
-    time_table.cpp
+    time_table.cpp \
+    repository.cpp \
+    professor.cpp \
+    course_class.cpp
 
 HEADERS  += mainwindow.h \
     chromosome.h \
     time_table.h \
     room.h \
-    class.h
+    repository.h \
+    professor.h \
+    course_class.h
 
 FORMS    += mainwindow.ui
 

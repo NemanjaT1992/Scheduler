@@ -3,22 +3,18 @@
 
 #include <vector>
 #include <utility>
+#include <profesor.h>
+#include <course_class.h>
 
 namespace constants
 {
     constexpr int hours = 12;
 }
 
-struct class_
-{
-    int id;
-    int total;
-};
-
 class time_table
 {
 private:
-    using container = std::vector<class_>;
+    using container = std::vector<course_class>;
     using value = container::value_type;
 
     container table;
@@ -37,12 +33,6 @@ public:
     container::iterator end();
     container::const_iterator begin() const;
     container::const_iterator end() const;
-};
-
-struct professor
-{
-    int id;
-    time_table table;
 };
 
 
