@@ -1,7 +1,6 @@
 #ifndef CHROMOSOME_H
 #define CHROMOSOME_H
 
-#include "time_table.h"
 #include "professor.h"
 
 class chromosome

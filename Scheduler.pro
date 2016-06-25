@@ -36,7 +36,8 @@ HEADERS  += mainwindow.h \
     repository.h \
     constraint.h \
     mutator.h \
-    random_generator.h
+    random_generator.h \
+    range.h
 
 FORMS    += mainwindow.ui
 
