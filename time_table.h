@@ -7,15 +7,24 @@
 
 namespace constants
 {
-    constexpr int hours = 12;
+constexpr int hours = 12;
 }
 
 struct class_data
 {
+    class_data(int8_t d, int8_t t, int8_t course, int8_t count, int8_t r, int8_t s)
+        : day(d)
+        ,time(t)
+        ,course(course)
+        ,count(count)
+        ,room(r)
+        ,student_group(s)
+    {
+    }
     int8_t day;
     int8_t time;
     int8_t course;
-    int8_t total;
+    int8_t count;
     int8_t room;
     int8_t student_group;
 };

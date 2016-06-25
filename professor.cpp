@@ -20,7 +20,7 @@ bool professor::is_available()
     for(int i=0; i<classes.size(); ++i)
     {
         int startIndex = classes.at(i).day * constants::hours + classes.at(i).time;
-        int endIndex = startIndex + classes.at(i).total;
+        int endIndex = startIndex + classes.at(i).count;
 
 //        while((available.at(startIndex) == 1) && ((startIndex - 1) != endIndex))
 //            startIndex++;

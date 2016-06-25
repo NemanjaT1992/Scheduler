@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     constraint.cpp \
     generation.cpp \
     mutator.cpp \
-    recombiner.cpp
+    recombiner.cpp \
+    generator.cpp
 
 HEADERS  += mainwindow.h \
     chromosome.h \
@@ -42,7 +43,8 @@ HEADERS  += mainwindow.h \
     constraint.h \
     generation.h \
     mutator.h \
-    recombiner.h
+    recombiner.h \
+    generator.h
 
 FORMS    += mainwindow.ui
 
