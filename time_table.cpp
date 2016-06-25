@@ -58,6 +58,11 @@ time_table::container::const_iterator time_table::end() const
     return table.cend();
 }
 
+void time_table::push_back(class_data cl_data)
+{
+    table.push_back(std::move(cl_data));
+}
+
 time_table::container time_table::get_table()
 {
     return table;

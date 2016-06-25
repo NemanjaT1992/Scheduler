@@ -51,6 +51,7 @@ public:
     container::iterator end();
     container::const_iterator begin() const;
     container::const_iterator end() const;
+    void push_back(class_data cl_data);
 
     container get_table();
     int size();

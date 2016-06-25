@@ -16,16 +16,16 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    chromosome c;
-    constraint constraint1([](auto& c) { return 2.0; });
-    constraint constraint2(test_eval);
+//    chromosome c;
+//    constraint constraint1([](auto& c) { return 2.0; });
+//    constraint constraint2(test_eval);
 
-    qDebug () << constraint1(c);
-    qDebug () << constraint2(c);
+//    qDebug () << constraint1(c);
+//    qDebug () << constraint2(c);
 
     repository::get_instance();
 
-    mutator{}(c);
+//    mutator{}(c);
 
     return a.exec();
 }

@@ -6,6 +6,7 @@
 #include "repository.h"
 #include "professor.h"
 #include "course_class.h"
+#include "random_generator.h"
 
 class generator
 {
@@ -15,6 +16,7 @@ public:
 
 private:
     int generation_length;
+    random_generator random;
 };
 
 #endif // GENERATOR_H
