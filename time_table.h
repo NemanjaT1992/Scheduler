@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <utility>
-#include "course_class.h"
 
 namespace constants
 {
