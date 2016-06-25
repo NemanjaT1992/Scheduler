@@ -58,3 +58,8 @@ time_table::container::const_iterator time_table::end() const
 {
     return table.cend();
 }
+
+int time_table::size()
+{
+    return table.size();
+}

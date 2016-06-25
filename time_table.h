@@ -9,16 +9,20 @@ namespace constants
     constexpr int hours = 12;
 }
 
-struct class_
+struct class_data
 {
-    int id;
-    int total;
+    int8_t day;
+    int8_t time;
+    int8_t course;
+    int8_t total;
+    int8_t room;
+    int8_t student_group;
 };
 
 class time_table
 {
 private:
-    using container = std::vector<class_>;
+    using container = std::vector<class_data>;
     using value = container::value_type;
 
     container table;
@@ -37,13 +41,9 @@ public:
     container::iterator end();
     container::const_iterator begin() const;
     container::const_iterator end() const;
+    int size();
 };
 
-struct professor
-{
-    int id;
-    time_table table;
-};
-
+class professor {};
 
 #endif // TIME_TABLE_H
