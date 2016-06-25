@@ -3,8 +3,7 @@
 
 #include <vector>
 #include <utility>
-#include <profesor.h>
-#include <course_class.h>
+#include "course_class.h"
 
 namespace constants
 {
@@ -45,7 +44,7 @@ public:
     container::const_iterator end() const;
 
     container get_table();
+    int size();
 };
-
 
 #endif // TIME_TABLE_H
