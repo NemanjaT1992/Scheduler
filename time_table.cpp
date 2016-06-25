@@ -61,5 +61,9 @@ time_table::container::const_iterator time_table::end() const
 
 time_table::container time_table::get_table()
 {
-    return container;
+    return table;
+}
+int time_table::size()
+{
+    return table.size();
 }

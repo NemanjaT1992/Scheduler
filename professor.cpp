@@ -30,7 +30,7 @@ bool professor::is_available()
 //        else
 //            return false;
 
-        return std::all_of(availiable.begin() + startIndex, available.begin() + endIndex,
+        return std::all_of(available.begin() + startIndex, available.begin() + endIndex,
                            [](int& i) { return i == 1; });
 
     }
