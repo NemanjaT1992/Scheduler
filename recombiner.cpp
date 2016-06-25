@@ -1,9 +1,11 @@
 #include "recombiner.h"
 #include <algorithm>
+
 recombiner::recombiner()
 {
 
 }
+
 recombiner::children_pair recombiner::recombine(chromosome &c1, chromosome &c2)
 {
     chromosome child1;

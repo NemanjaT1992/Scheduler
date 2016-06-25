@@ -34,3 +34,8 @@ double constraint::evaluate(chromosome& c)
 {
     return evaluator(c);
 }
+
+double constraint::operator()(chromosome& c)
+{
+    return evaluator(c);
+}

@@ -32,6 +32,5 @@ bool professor::is_available()
 
         return std::all_of(available.begin() + startIndex, available.begin() + endIndex,
                            [](int& i) { return i == 1; });
-
     }
 }

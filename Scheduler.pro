@@ -23,11 +23,8 @@ SOURCES += main.cpp\
     repository.cpp \
     professor.cpp \
     course_class.cpp \
-    constraint.cpp \
-    generation.cpp \
-    mutator.cpp \
-    recombiner.cpp \
-    generator.cpp
+    generator.cpp \
+    random_generator.cpp
 
 HEADERS  += mainwindow.h \
     chromosome.h \
@@ -40,11 +37,8 @@ HEADERS  += mainwindow.h \
     repository.h \
     constraint.h \
     mutator.h \
-    constraint.h \
-    generation.h \
-    mutator.h \
-    recombiner.h \
-    generator.h
+    generator.h \
+    random_generator.h
 
 FORMS    += mainwindow.ui
 
