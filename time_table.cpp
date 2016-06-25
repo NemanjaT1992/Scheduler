@@ -63,3 +63,11 @@ int time_table::size()
 {
     return table.size();
 }
+int time_table::has_same()
+{
+    for(int i = 0; i < table.size(); i++)
+        for(int j = i + 1; j < table.size(); ++j)
+            if(table[i].course == table[j].course && table[i].student_group == table[j].student_group)
+                return i;
+    return -1;
+}

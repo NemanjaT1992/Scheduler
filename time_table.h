@@ -43,6 +43,7 @@ public:
     container::const_iterator begin() const;
     container::const_iterator end() const;
     int size();
+    int has_same();
 };
 
 #endif // TIME_TABLE_H
