@@ -54,9 +54,9 @@ generation generator::generate()
                             count = random(dis);
                             last_count = count/100;
 
-                            dis = std::uniform_int_distribution<> (0, 10);
+                            dis = std::uniform_int_distribution<> (0, repository::get_instance().rooms_count());
                             int8_t room = random(dis);
-                            dis = std::uniform_int_distribution<> (0, 10);
+                            dis = std::uniform_int_distribution<> (0, repository::get_instance().student_groups_count());
                             int8_t student_group = random(dis);
 
                             class_data cl_data(day, time, course, count, room, student_group);
@@ -64,9 +64,9 @@ generation generator::generate()
                         }
                     }
                 }
-                dis = std::uniform_int_distribution<> (0, 10);
+                dis = std::uniform_int_distribution<> (0, repository::get_instance().rooms_count());
                 int8_t room = random(dis);
-                dis = std::uniform_int_distribution<> (0, 10);
+                dis = std::uniform_int_distribution<> (0, repository::get_instance().student_groups_count());
                 int8_t student_group = random(dis);
 
                 class_data cl_data(day, time, course, count, room, student_group);

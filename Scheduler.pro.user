@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.0.2, 2016-06-26T00:26:05. -->
+=======
+<<<<<<< HEAD
+<!-- Written by QtCreator 4.0.2, 2016-06-25T16:53:54. -->
+<qtcreator>
+ <data>
+  <variable>EnvironmentId</variable>
+  <value type="QByteArray">{0f600beb-8daf-4ead-a1c4-2206611100aa}</value>
+=======
+<<<<<<< HEAD
+<!-- Written by QtCreator 4.0.2, 2016-06-25T04:27:56. -->
+>>>>>>> 75772f0e6a6a5ef40f8aa140cc6c132435c3a6b7
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
   <value type="QByteArray">{b9180c7b-1dc5-4281-9b7c-9101f7435a82}</value>
+<<<<<<< HEAD
+=======
+=======
+<!-- Written by QtCreator 4.0.2, 2016-06-25T05:48:29. -->
+<qtcreator>
+ <data>
+  <variable>EnvironmentId</variable>
+  <value type="QByteArray">{24186a2e-8d16-4158-8ddd-6ac56828baff}</value>
+>>>>>>> 5a8b706793d8fa1f6d4d2eed54e4001be3ec97f5
+>>>>>>> a3d62777a8a59b0c31cd2c5f49cfef896904f673
+>>>>>>> 75772f0e6a6a5ef40f8aa140cc6c132435c3a6b7
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>

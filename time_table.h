@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <utility>
-#include "course_class.h"
 
 namespace constants
 {
@@ -55,6 +54,7 @@ public:
 
     container get_table();
     int size();
+    int has_same();
 };
 
 #endif // TIME_TABLE_H
