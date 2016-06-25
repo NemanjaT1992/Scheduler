@@ -15,14 +15,20 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     chromosome.cpp \
     time_table.cpp \
+    room.cpp \
     constraint.cpp \
-    mutator.cpp
+    mutator.cpp \
+    repository.cpp \
+    professor.cpp \
+    course_class.cpp
 
 HEADERS  += mainwindow.h \
     chromosome.h \
     time_table.h \
     room.h \
-    class.h \
+    course_class.h \
+    professor.h \
+    repository.h \
     constraint.h \
     mutator.h
 

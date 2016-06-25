@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "repository.h"
 #include <QApplication>
 #include <iostream>
 #include <QDebug>
@@ -20,6 +21,8 @@ int main(int argc, char *argv[])
 
     qDebug () << constraint1.evaluate(c);
     qDebug () << constraint2.evaluate(c);
+
+    repository::get_instance();
 
     return a.exec();
 }
