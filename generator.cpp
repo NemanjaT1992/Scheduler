@@ -9,8 +9,8 @@ generation generator::generate()
 {
     generation gen(generation_length);
 
-    std::vector<professor> professors = repository::get_professors();
-    std::vector<course_class> courses = repository::get_courses();
+    std::vector<professor> professors = repository::get_instance().get_professors();
+    std::vector<course_class> courses = repository::get_instance().get_courses();
 
     for(int i=0; i<generation_length; ++i)
     {
