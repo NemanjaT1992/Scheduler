@@ -9,12 +9,6 @@ namespace constants
     constexpr int hours = 12;
 }
 
-struct class_
-{
-    int id;
-    int total;
-};
-
 class time_table
 {
 private:
@@ -37,13 +31,7 @@ public:
     container::iterator end();
     container::const_iterator begin() const;
     container::const_iterator end() const;
+    int size();
 };
-
-struct professor
-{
-    int id;
-    time_table table;
-};
-
 
 #endif // TIME_TABLE_H

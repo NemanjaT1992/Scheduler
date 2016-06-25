@@ -14,13 +14,17 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     chromosome.cpp \
-    time_table.cpp
+    time_table.cpp \
+    recombiner.cpp \
+    generation.cpp
 
 HEADERS  += mainwindow.h \
     chromosome.h \
     time_table.h \
     room.h \
-    class.h
+    class.h \
+    recombiner.h \
+    generation.h
 
 FORMS    += mainwindow.ui
 
