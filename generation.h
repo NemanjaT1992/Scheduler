@@ -9,8 +9,10 @@
 class generation
 {
 private:
-    std::vector<chromosome> gen;
     int size;
+
+public:
+    std::vector<chromosome> gen;
 
 public:
     generation();
