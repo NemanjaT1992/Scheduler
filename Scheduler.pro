@@ -23,6 +23,7 @@ SOURCES += main.cpp\
     repository.cpp \
     professor.cpp \
     course_class.cpp \
+    generator.cpp \
     random_generator.cpp
 
 HEADERS  += mainwindow.h \
@@ -37,7 +38,8 @@ HEADERS  += mainwindow.h \
     constraint.h \
     mutator.h \
     random_generator.h \
-    range.h
+    range.h \
+    generator.h \
 
 FORMS    += mainwindow.ui
 

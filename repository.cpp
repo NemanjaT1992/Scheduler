@@ -72,3 +72,13 @@ course_class& repository::get_course(int id)
 {
     return courses.at(id);
 }
+
+std::vector<professor>& repository::get_professors()
+{
+    return professors;
+}
+
+std::vector<course_class>& repository::get_courses()
+{
+    return courses;
+}
