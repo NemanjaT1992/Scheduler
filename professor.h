@@ -10,6 +10,7 @@ struct professor
 {
     professor(int id, QString name, QString last_name, std::vector<int> courses, std::vector<int> available);
     void print();
+    bool is_available();
 
     int id;
     time_table table;
