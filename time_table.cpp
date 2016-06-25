@@ -2,7 +2,6 @@
 
 time_table::time_table()
 {
-    table.resize(5 * constants::hours);
 }
 
 time_table::time_table(const time_table& other)
@@ -59,6 +58,10 @@ time_table::container::const_iterator time_table::end() const
     return table.cend();
 }
 
+time_table::container time_table::get_table()
+{
+    return table;
+}
 int time_table::size()
 {
     return table.size();

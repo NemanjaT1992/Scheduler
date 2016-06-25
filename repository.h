@@ -24,6 +24,9 @@ public:
     professor& get_professor(int id);
     course_class& get_course(int id);
 
+    std::vector<professor>& get_professors();
+    std::vector<course_class>& get_courses();
+
 private:
     repository();
     repository(repository const&)            = delete;

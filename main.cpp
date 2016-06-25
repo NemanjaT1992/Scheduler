@@ -6,6 +6,7 @@
 
 #include "chromosome.h"
 #include "constraint.h"
+#include "mutator.h"
 
 double test_eval(chromosome& c) { return 3.0; }
 
@@ -23,6 +24,8 @@ int main(int argc, char *argv[])
     qDebug () << constraint2(c);
 
     repository::get_instance();
+
+    mutator{}(c);
 
     return a.exec();
 }

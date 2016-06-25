@@ -10,9 +10,13 @@ class generation
 {
 private:
     std::vector<chromosome> gen;
+    int size;
+
 public:
     generation();
     generation(int size);
+
+    void insert(chromosome chr);
 };
 
 #endif // GENERATION_H

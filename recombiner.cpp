@@ -1,10 +1,15 @@
 #include "recombiner.h"
 #include <algorithm>
+<<<<<<< HEAD
 #include "time_table.h"
+=======
+
+>>>>>>> a3d62777a8a59b0c31cd2c5f49cfef896904f673
 recombiner::recombiner()
 {
 
 }
+
 recombiner::children_pair recombiner::recombine(chromosome &c1, chromosome &c2)
 {
     chromosome child1;
