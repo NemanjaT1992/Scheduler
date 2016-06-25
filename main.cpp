@@ -7,6 +7,7 @@
 #include "chromosome.h"
 #include "constraint.h"
 #include "mutator.h"
+#include "generator.h"
 
 double test_eval(chromosome& c) { return 3.0; }
 
@@ -24,6 +25,8 @@ int main(int argc, char *argv[])
 //    qDebug () << constraint2(c);
 
     repository::get_instance();
+    generator m_generator(5);
+    m_generator.generate();
 
 //    mutator{}(c);
 
