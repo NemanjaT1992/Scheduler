@@ -3,16 +3,27 @@
 
 #include <vector>
 #include <utility>
+#include "course_class.h"
 
 namespace constants
 {
     constexpr int hours = 12;
 }
 
+struct class_data
+{
+    int8_t day;
+    int8_t time;
+    int8_t course;
+    int8_t total;
+    int8_t room;
+    int8_t student_group;
+};
+
 class time_table
 {
 private:
-    using container = std::vector<class_>;
+    using container = std::vector<class_data>;
     using value = container::value_type;
 
     container table;

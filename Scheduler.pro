@@ -16,15 +16,25 @@ SOURCES += main.cpp\
     chromosome.cpp \
     time_table.cpp \
     recombiner.cpp \
-    generation.cpp
+    generation.cpp \
+    room.cpp \
+    constraint.cpp \
+    mutator.cpp \
+    repository.cpp \
+    professor.cpp \
+    course_class.cpp
 
 HEADERS  += mainwindow.h \
     chromosome.h \
     time_table.h \
     room.h \
-    class.h \
     recombiner.h \
-    generation.h
+    generation.h \
+    course_class.h \
+    professor.h \
+    repository.h \
+    constraint.h \
+    mutator.h
 
 FORMS    += mainwindow.ui
 
