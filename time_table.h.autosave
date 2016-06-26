@@ -61,7 +61,6 @@ public:
 
     container get_table();
     int size();
-    bool has_same();
 };
 
 #endif // TIME_TABLE_H

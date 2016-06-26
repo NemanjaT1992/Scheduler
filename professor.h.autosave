@@ -2,7 +2,6 @@
 #define PROFESSOR_H
 
 #include "course_class.h"
-#include "time_table.h"
 #include <vector>
 #include <QString>
 
@@ -15,7 +14,6 @@ struct professor
     bool is_available();
 
     int id;
-    time_table table;
     QString name;
     QString last_name;
     availability available;

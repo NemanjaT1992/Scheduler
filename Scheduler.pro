@@ -38,7 +38,8 @@ HEADERS  += mainwindow.h \
     constraint.h \
     mutator.h \
     generator.h \
-    random_generator.h
+    random_generator.h \
+    evaluation.h
 
 FORMS    += mainwindow.ui
 

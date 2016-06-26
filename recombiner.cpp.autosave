@@ -15,14 +15,14 @@ recombiner::children_pair recombiner::recombine(chromosome &c1, chromosome &c2)
 
     for(int i = 0; i < c1.schedule.size(); ++i)
     {
-        professor p1 = c1.schedule[i];
-        professor p2 = c2.schedule[i];
+        time_table& table1 = c1.schedule[i];
+        time_table& table2 = c2.schedule[i];
 
-        int intersect = std::rand() % p1.table.size();
-        professor child_p1(p1);
-        professor child_p2(p2);
-        std::copy(p2.table.begin() + intersect, p2.table.end(), child_p1.table.begin());
-        std::copy(p1.table.begin() + intersect, p1.table.end(), child_p2.table.begin());
+        int intersect = std::rand() % table1.size();
+        time_table child_table1(table1);
+        time_table child_table2(table2);
+        std::copy(table2.begin() + intersect, table2.end(), child_table1.begin());
+        std::copy(table1.begin() + intersect, table1.end(), child_table2.begin());
 
 //        if(int index1 = child_p1.table.has_same() != -1)
 //        {
@@ -31,8 +31,8 @@ recombiner::children_pair recombiner::recombine(chromosome &c1, chromosome &c2)
 //            child_p1.table[index1] = child_p2.table[index2];
 //            child_p2.table[index2] = tmp;
 //        }
-        child1.schedule.push_back(child_p1);
-        child2.schedule.push_back(child_p2);
+        child1.schedule.push_back(child_table1);
+        child2.schedule.push_back(child_table2);
     }
     return children_pair(child1, child2);
 }
