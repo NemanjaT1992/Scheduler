@@ -1,6 +1,6 @@
 #include "professor.h"
 
-professor::professor(int id, QString name, QString last_name, std::vector<int> courses, std::vector<int> available)
+professor::professor(int id, QString name, QString last_name, std::vector<int> courses, std::vector<std::vector<int>>available)
 {
     this->id = id;
     this->name = name;

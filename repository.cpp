@@ -88,8 +88,8 @@ bool repository::load_professors(QString fileName)
             for(int i=0; i<available.length(); ++i)
                 avail.push_back(available.mid(i, 1).toInt());
 
-            professor prof(id++, line_elements.at(0), line_elements.at(1), std::move(classesTmp), std::move(avail));
-            professors.push_back(prof);
+//            professor prof(id++, line_elements.at(0), line_elements.at(1), std::move(classesTmp), std::move(avail));
+//            professors.push_back(prof);
         }
         inputFile.close();
         return true;

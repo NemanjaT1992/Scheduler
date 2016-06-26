@@ -42,7 +42,9 @@ HEADERS  += mainwindow.h \
     random_generator.h \
     range.h \
     generator.h \
-    student_group.h
+    student_group.h \
+    evaluation.h
+
 
 FORMS    += mainwindow.ui
 
