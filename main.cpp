@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "repository.h"
 #include <QApplication>
 #include <iostream>
 #include <QDebug>
@@ -8,6 +7,7 @@
 #include "constraint.h"
 #include "mutator.h"
 #include "generator.h"
+#include "repository.h"
 #include "range.h"
 
 double test_eval(chromosome& c) { return 3.0; }
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     repository::get_instance();
     generator m_generator(5);
-    m_generator.generate();
+//    m_generator.generate();
 
 //    mutator{}(c);
 
@@ -42,6 +42,13 @@ int main(int argc, char *argv[])
     qDebug () << courses.first << courses.second;
     qDebug () << rooms.first << rooms.second;
     qDebug () << professors.first << professors.second;
+
+    auto dis = range::distribution_of(type::hours);
+    range::distribution_of(type::course);
+
+    random_generator r;
+    for (int i = 0; i < 10; ++i)
+        qDebug () << r(dis);
 
     return a.exec();
 }

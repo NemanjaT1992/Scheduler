@@ -6,7 +6,7 @@
 
 namespace constants
 {
-constexpr int hours = 12;
+    constexpr int hours = 12;
 }
 
 struct class_data

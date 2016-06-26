@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     course_class.cpp \
     generator.cpp \
     random_generator.cpp \
-    student_group.cpp
+    student_group.cpp \
+    range.cpp
 
 HEADERS  += mainwindow.h \
     chromosome.h \

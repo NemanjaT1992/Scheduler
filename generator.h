@@ -1,12 +1,11 @@
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
-#include "chromosome.h"
 #include "generation.h"
-#include "repository.h"
+#include "random_generator.h"
+#include "chromosome.h"
 #include "professor.h"
 #include "course_class.h"
-#include "random_generator.h"
 #include "room.h"
 #include "student_group.h"
 

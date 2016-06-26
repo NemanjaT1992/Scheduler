@@ -1,5 +1,50 @@
 #include "repository.h"
 
+namespace get
+{
+    std::vector<professor>& professors()
+    {
+        return repository::get_instance().get_professors();
+    }
+
+    std::vector<course_class>& courses()
+    {
+        return repository::get_instance().get_courses();
+    }
+
+    std::vector<room>& rooms()
+    {
+        return repository::get_instance().get_rooms();
+    }
+
+    std::vector<student_group>& student_groups()
+    {
+        return repository::get_instance().get_student_groups();
+    }
+
+    professor& professor_at(int id)
+    {
+        return repository::get_instance().get_professor(id);
+    }
+
+    course_class& course_at(int id)
+    {
+        return repository::get_instance().get_course(id);
+    }
+
+    room& room_at(int id)
+    {
+        return repository::get_instance().get_room(id);
+    }
+
+    student_group& student_group_at(int id)
+    {
+        return repository::get_instance().get_student_group(id);
+    }
+}
+
+
+
 repository::repository()
 {
     bool profs_loaded = load_professors("professors.txt");
