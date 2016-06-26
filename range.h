@@ -5,22 +5,23 @@
 #include <random>
 #include <array>
 #include "time_table.h"
+#include "repository.h"
+
+enum class type
+{
+    hours = 0,
+    day,
+    course,
+    room,
+    professor,
+    student_group
+};
 
 namespace range
 {
     using index_pair = std::pair<int, int>;
     using distribution = std::uniform_int_distribution<>;
     using getter = std::pair<int, int>(*)();
-
-    enum class type
-    {
-        hours = 0,
-        day,
-        course,
-        room,
-        professor,
-        student_group
-    };
 
     index_pair hours()
     {
@@ -34,26 +35,22 @@ namespace range
 
     index_pair course()
     {
-//        return std::make_pair(0, repository::get_repository().courses_count());
-        return std::make_pair(0, 0);
+        return std::make_pair(0, repository::get_instance().courses_count());
     }
 
     index_pair room()
     {
-//        return std::make_pair(0, repository::get_repository().rooms_count());
-        return std::make_pair(0, 0);
+        return std::make_pair(0, repository::get_instance().rooms_count());
     }
 
     index_pair professor()
     {
-//        return std::make_pair(0, repository::get_repository().professors_count());
-        return std::make_pair(0, 0);
+        return std::make_pair(0, repository::get_instance().professors_count());
     }
 
     index_pair student_group()
     {
-//        return std::make_pair(0, repository::get_repository().student_groups_count());
-        return std::make_pair(0, 0);
+        return std::make_pair(0, repository::get_instance().student_groups_count());
     }
 
     const std::array<getter, 6> types { hours, day, course, room, professor, student_group };
@@ -61,7 +58,7 @@ namespace range
     template<type t>
     distribution distribution_of()
     {
-        auto pair = types[static_cast<int>(t)];
+        auto pair = types[static_cast<int>(t)]();
 
         return distribution(pair.first, pair.second);
     }

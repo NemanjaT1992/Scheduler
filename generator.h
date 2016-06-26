@@ -7,8 +7,7 @@
 #include "professor.h"
 #include "course_class.h"
 #include "random_generator.h"
-#include "room.h"
-#include "student_group.h"
+//#include "range.h"
 
 class generator
 {
