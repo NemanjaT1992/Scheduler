@@ -30,7 +30,7 @@ namespace evaluation
             
             for(int j = 0; j < table.size(); ++j)
             {
-                eval_depth_3(eval, table, professor, table.get_table()[j];
+                eval_depth_3(eval, table, professor, table.get_table()[j]);
             }
             
         }
