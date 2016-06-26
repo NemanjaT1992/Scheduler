@@ -43,8 +43,6 @@ namespace get
     }
 }
 
-
-
 repository::repository()
 {
     bool profs_loaded = load_professors("professors.txt");
