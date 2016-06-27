@@ -4,6 +4,8 @@
 #include <utility>
 #include <random>
 #include <array>
+#include "time_table.h"
+#include "repository.h"
 #include <map>
 
 enum class type
@@ -22,6 +24,7 @@ namespace range
     using index_pair = std::pair<int, int>;
     using distribution = std::uniform_int_distribution<>;
     using getter = std::pair<int, int>(*)();
+
 
     index_pair hours();
     index_pair day();

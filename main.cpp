@@ -27,21 +27,21 @@ int main(int argc, char *argv[])
 
     repository::get_instance();
     generator m_generator(5);
-//    m_generator.generate();
+    m_generator.generate();
 
 //    mutator{}(c);
 
-    auto days = range::day();
-    auto hours = range::hours();
-    auto courses = range::course();
-    auto rooms = range::room();
-    auto professors = range::professor();
+//    auto days = range::day();
+//    auto hours = range::hours();
+//    auto courses = range::course();
+//    auto rooms = range::room();
+//    auto professors = range::professor();
 
-    qDebug () << days.first << days.second;
-    qDebug () << hours.first << hours.second;
-    qDebug () << courses.first << courses.second;
-    qDebug () << rooms.first << rooms.second;
-    qDebug () << professors.first << professors.second;
+//    qDebug () << days.first << days.second;
+//    qDebug () << hours.first << hours.second;
+//    qDebug () << courses.first << courses.second;
+//    qDebug () << rooms.first << rooms.second;
+//    qDebug () << professors.first << professors.second;
 
     auto dis = range::distribution_of(type::hours);
     range::distribution_of(type::course);

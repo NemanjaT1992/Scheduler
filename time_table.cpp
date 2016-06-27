@@ -79,3 +79,9 @@ bool time_table::has_same()
                 return true;
     return false;
 }
+
+void time_table::print()
+{
+    for(int i=0; i<table.size(); ++i)
+        table.at(i).print();
+}

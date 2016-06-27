@@ -19,6 +19,7 @@ public:
     generation(int size);
 
     void insert(chromosome chr);
+    void print();
 };
 
 #endif // GENERATION_H

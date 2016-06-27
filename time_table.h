@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <utility>
+#include <QDebug>
 
 namespace constants
 {
@@ -27,6 +28,12 @@ struct class_data
         ,student_group(s)
     {
     }
+
+    void print()
+    {
+        qDebug() << "class_data:"<< day << time << course << count << room << student_group;
+    }
+
     int8_t day;
     int8_t time;
     int8_t course;
@@ -62,6 +69,7 @@ public:
     container get_table();
     int size();
     bool has_same();
+    void print();
 };
 
 #endif // TIME_TABLE_H

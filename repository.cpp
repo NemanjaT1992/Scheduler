@@ -2,45 +2,45 @@
 
 namespace get
 {
-    std::vector<professor>& professors()
-    {
-        return repository::get_instance().get_professors();
-    }
+std::vector<professor>& professors()
+{
+    return repository::get_instance().get_professors();
+}
 
-    std::vector<course_class>& courses()
-    {
-        return repository::get_instance().get_courses();
-    }
+std::vector<course_class>& courses()
+{
+    return repository::get_instance().get_courses();
+}
 
-    std::vector<room>& rooms()
-    {
-        return repository::get_instance().get_rooms();
-    }
+std::vector<room>& rooms()
+{
+    return repository::get_instance().get_rooms();
+}
 
-    std::vector<student_group>& student_groups()
-    {
-        return repository::get_instance().get_student_groups();
-    }
+std::vector<student_group>& student_groups()
+{
+    return repository::get_instance().get_student_groups();
+}
 
-    professor& professor_at(int id)
-    {
-        return repository::get_instance().get_professor(id);
-    }
+professor& professor_at(int id)
+{
+    return repository::get_instance().get_professor(id);
+}
 
-    course_class& course_at(int id)
-    {
-        return repository::get_instance().get_course(id);
-    }
+course_class& course_at(int id)
+{
+    return repository::get_instance().get_course(id);
+}
 
-    room& room_at(int id)
-    {
-        return repository::get_instance().get_room(id);
-    }
+room& room_at(int id)
+{
+    return repository::get_instance().get_room(id);
+}
 
-    student_group& student_group_at(int id)
-    {
-        return repository::get_instance().get_student_group(id);
-    }
+student_group& student_group_at(int id)
+{
+    return repository::get_instance().get_student_group(id);
+}
 }
 
 
@@ -83,13 +83,19 @@ bool repository::load_professors(QString fileName)
             for(int i=0; i<classes.length(); ++i)
                 classesTmp.push_back(classes.at(i).toInt());
 
-            QString available = line_elements.at(3);
-            std::vector<int> avail;
-            for(int i=0; i<available.length(); ++i)
-                avail.push_back(available.mid(i, 1).toInt());
+            std::vector<std::vector<int>> avail;
 
-//            professor prof(id++, line_elements.at(0), line_elements.at(1), std::move(classesTmp), std::move(avail));
-//            professors.push_back(prof);
+            for(int i=3; i<line_elements.length(); ++i)
+            {
+                QString day_avail = line_elements.at(i);
+                std::vector<int> day_vector;
+                for(int i=0; i<day_avail.length(); ++i)
+                    day_vector.push_back(day_avail.mid(i, 1).toInt());
+                avail.push_back(day_vector);
+            }
+
+            professor prof(id++, line_elements.at(0), line_elements.at(1), std::move(classesTmp), std::move(avail));
+            professors.push_back(prof);
         }
         inputFile.close();
         return true;
