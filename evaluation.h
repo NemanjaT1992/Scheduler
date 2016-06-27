@@ -51,7 +51,7 @@ namespace evaluation
     {
         
     }
-    
+    //depth 3 functions
     void available(double& eval, professor& p, class_data& reff_data)
     {
         //this one has to be highest or high priority
@@ -96,6 +96,13 @@ namespace evaluation
             }
         }            
     }
+
+
+    //depth 2 functions
+
+
+
+    //depth 1 functions
     void dsa(double& eval, table& p)
     {
         
