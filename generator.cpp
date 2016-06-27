@@ -91,8 +91,8 @@ generation generator::generate()
             chrom.schedule.push_back(tt);
 //            qDebug() << "chrom added:" << c;
         }
-        f_generation.gen.push_back(chrom);
+        f_generation.push_back(chrom);
     }
-    f_generation.print();
+//    f_generation.print();
     return f_generation;
 }

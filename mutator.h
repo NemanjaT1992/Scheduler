@@ -3,13 +3,12 @@
 
 #include "chromosome.h"
 #include "random_generator.h"
-//#include "time_table.h"
 #include <utility>
 
 class mutator
 {
 private:
-    using data_ptr = decltype(&class_data::count);
+    using data_ptr = decltype(&class_data::day);
 
     random_generator random;
     std::uniform_int_distribution<> probability_distribution;

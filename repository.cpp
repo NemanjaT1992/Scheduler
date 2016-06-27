@@ -43,8 +43,6 @@ student_group& student_group_at(int id)
 }
 }
 
-
-
 repository::repository()
 {
     bool profs_loaded = load_professors("professors.txt");

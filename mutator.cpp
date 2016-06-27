@@ -1,10 +1,10 @@
-#include "mutator.h"
+ #include "mutator.h"
 #include "range.h"
 
 mutator::mutator()
     : probability_distribution(0, 1000)
     , mutation_rate(5)
-    , data({ &class_data::day, &class_data::time, &class_data::count, &class_data::course, &class_data::room, &class_data::student_group })
+    , data({ &class_data::day, &class_data::time, &class_data::room })
 {
 
 }
@@ -21,7 +21,7 @@ chromosome mutator::operator()(chromosome& c)
 
             std::uniform_int_distribution<> table_index(0, table.size());
             std::uniform_int_distribution<> data_index(0, data.size());
-
+            
             int ti = random(table_index);
             int di = random(data_index);
 

@@ -12,16 +12,18 @@ enum class type
 {
     day = 0,
     hours,
+    room,
     count,
     course,
-    room,
     student_group,
     professor
 };
 
+using index_pair = std::pair<int, int>;
+
 namespace range
 {
-    using index_pair = std::pair<int, int>;
+//    using index_pair = std::pair<int, int>;
     using distribution = std::uniform_int_distribution<>;
     using getter = std::pair<int, int>(*)();
 
@@ -34,7 +36,7 @@ namespace range
     index_pair professor();
     index_pair student_group();
 
-    static std::array<getter, 7> types = { day, hours, count, course, room, student_group, professor };
+    static std::array<getter, 7> types = { day, hours, room, count, course, student_group, professor };
 
     distribution distribution_of(type t);
 

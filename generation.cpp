@@ -1,21 +1,7 @@
 #include "generation.h"
 
-generation::generation()
-{
-
-}
-generation::generation(int size)
-{
-    this->size = size;
-}
-
-void generation::insert(chromosome chr)
-{
-    gen.push_back(chr);
-}
-
-void generation::print()
-{
+//void generation::print()
+//{
 //    for(int c=0; c<gen.size(); ++c)
 //    {
 //        qDebug() << "chromosome "<< c <<"---------------------------------------------";
@@ -26,4 +12,4 @@ void generation::print()
 //            prof.table.print();
 //        }
 //    }
-}
+//}

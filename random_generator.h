@@ -12,5 +12,7 @@ public:
     random_generator();
 
     int operator()(std::uniform_int_distribution<>& distribution);
+    double operator()(std::uniform_real_distribution<>& distribution);
+
 };
 #endif // RANDOM_GENERATOR_H

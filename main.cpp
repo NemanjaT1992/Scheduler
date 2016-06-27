@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <iostream>
 #include <QDebug>
+#include <algorithm>
 
 #include "chromosome.h"
 #include "constraint.h"
@@ -9,6 +10,7 @@
 #include "generator.h"
 #include "repository.h"
 #include "range.h"
+#include "selector.h"
 
 double test_eval(chromosome& c) { return 3.0; }
 
@@ -49,6 +51,8 @@ int main(int argc, char *argv[])
     random_generator r;
     for (int i = 0; i < 10; ++i)
         qDebug () << r(dis);
+
+    selector sel;
 
     return a.exec();
 }

@@ -11,6 +11,7 @@ struct professor
 {
     professor(int id, QString name, QString last_name, std::vector<int> courses, availability available);
     void print();
+    bool is_available();
 
     int id;
     QString name;
