@@ -8,6 +8,8 @@
 struct selector
 {
     int elitism_rate;
+    int tournament_size;
+    std::uniform_int_distribution<> fitness_range;
     random_generator random;
 
     selector();

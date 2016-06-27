@@ -2,6 +2,8 @@
 
 selector::selector()
     : elitism_rate(2)
+    , fitness_range(0.0, 1.0)
+    , tournament_size(5)
 {
 }
 
@@ -36,7 +38,6 @@ index_pair selector::stochastic_roulette(generation& gen)
 
     double max_fitness = 0.9;
     std::uniform_int_distribution<> chromosome_index(0, gen.size());
-    std::uniform_real_distribution<> fitness_range(0.0, 1.0);
 
     auto select = [&](auto& random)
     {
@@ -95,7 +96,6 @@ index_pair selector::tournament(generation& gen)
 {
     std::uniform_int_distribution<> chromosome_index(0, gen.size());
 
-    int tournament_size = 5;
     std::vector<double> tour;
     tour.reserve(tournament_size);
 
