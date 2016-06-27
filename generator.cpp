@@ -1,4 +1,6 @@
 #include "generator.h"
+#include "range.h"
+#include "repository.h"
 
 generator::generator(int generation_length)
 {
@@ -20,9 +22,11 @@ generation generator::generate()
         for(int p=0; p<professors.size(); ++p)
         {
             professor infoProf = professors.at(p);
-            professor prof(p, infoProf.name, infoProf.last_name, infoProf.courses, infoProf.available);
+            time_table tt = time_table();
+//            professor prof(p, infoProf.name, infoProf.last_name, infoProf.courses, infoProf.available);
 
             int professor_course_count = professors.at(p).courses.size();
+            qDebug() << "professor_course_count: " << professor_course_count;
             for(int c=0; c<professor_course_count; ++c)
             {
                 std::uniform_int_distribution<> dis(0, 4);
@@ -63,11 +67,11 @@ generation generator::generate()
                             int8_t room = random(dis);
                             dis = std::uniform_int_distribution<> (0, repository::get_instance().student_groups_count());
                             int8_t student_group = random(dis);
-
                             class_data cl_data(day, time, course, count, room, student_group);
+                            tt.push_back(cl_data);
 //                            professors.at(p).table.push_back(cl_data);
-                            prof.table.push_back(cl_data);
-                            chrom.schedule.push_back(prof);
+//                            prof.table.push_back(cl_data);
+//                            chrom.schedule.push_back(tt);
                         }
                     }
                 }
@@ -77,13 +81,14 @@ generation generator::generate()
                 int8_t student_group = random(dis);
 
                 class_data cl_data(day, time, course, count, room, student_group);
+                tt.push_back(cl_data);
 //                professors.at(p).table.push_back(cl_data);
-                prof.table.push_back(cl_data);
-                chrom.schedule.push_back(prof);
+//                prof.table.push_back(cl_data);
+//                chrom.schedule.push_back(tt);
 //                chrom.schedule.at(p).table.push_back(cl_data);
                 qDebug() << c;
             }
-            chrom.schedule.push_back(professors.at(p));
+            chrom.schedule.push_back(tt);
 //            qDebug() << "chrom added:" << c;
         }
         f_generation.gen.push_back(chrom);

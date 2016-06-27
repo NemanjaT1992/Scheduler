@@ -1,12 +1,12 @@
 #ifndef CHROMOSOME_H
 #define CHROMOSOME_H
 
-#include "professor.h"
+#include "time_table.h"
 
 class chromosome
 {
 public:
-    std::vector<professor> schedule;
+    std::vector<time_table> schedule;
 
 public:
     chromosome();

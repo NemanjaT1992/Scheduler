@@ -11,6 +11,19 @@
 #include <QTextStream>
 #include <QDebug>
 
+namespace get
+{
+    std::vector<professor>& professors();
+    std::vector<course_class>& courses();
+    std::vector<room>& rooms();
+    std::vector<student_group>& student_groups();
+
+    professor& professor_at(int id);
+    course_class& course_at(int id);
+    room& room_at(int id);
+    student_group& student_group_at(int id);
+}
+
 class repository
 {
 public:

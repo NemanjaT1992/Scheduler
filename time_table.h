@@ -7,7 +7,14 @@
 
 namespace constants
 {
-constexpr int hours = 12;
+
+    constexpr int hours = 12;
+
+
+//evaluation priorities constants
+constexpr double priority = 1.0;
+
+
 }
 
 struct class_data
@@ -61,7 +68,7 @@ public:
 
     container get_table();
     int size();
-    int has_same();
+    bool has_same();
     void print();
 };
 
