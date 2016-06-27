@@ -29,30 +29,10 @@ struct selector
 
     index_pair operator()(generation& gen, roulette)
     {
-        auto& chromosomes = gen.gen;
-//        std::vector<chromosome> selected;
-//        selected.reserve(chromosomes.size());
-//        index_pair selected;
+//        double sum = std::accumulate(gen.begin(), gen.end(), 0.0, [](double prev, auto& c) { return prev + c.fitness; });
 
-//        double sum = std::accumulate(chromosomes.begin(), chromosomes.end(), 0,
-//                                     [](int& prev, auto& c) { return prev + c.fitness; });
         double sum = 30.0;
         std::uniform_real_distribution<> dis_sum(0.0, sum);
-
-//        for (int i = 0; i < chromosomes.size(); ++i)
-//        {
-//            double probability = random(dis_sum);
-//            int index = 0;
-
-//            while (probability > 0)
-//            {
-//    //            probability -= chromosomes[index].fitness;
-//                ++index;
-//            }
-
-////            selected.push_back(chromosomes[index]);
-//            pair.first = chromosomes[index];
-//        }
 
         auto select = [&](auto& random)
         {
@@ -61,7 +41,7 @@ struct selector
 
             while (probability > 0)
             {
-//                probability -= chromosomes[index].fitness;
+//                probability -= gen[index].fitness;
                 ++index;
             }
 
@@ -73,38 +53,19 @@ struct selector
 
     index_pair operator()(generation& gen, roulette_stochastic)
     {
-        auto& chromosomes = gen.gen;
-//        std::vector<chromosome> selected;
-//        selected.reserve(chromosomes.size());
-//        index_pair selected;
-
-//        double max_fitness = std::max_element(chromosomes.begin(), chromosomes.end(),
+//        double max_fitness = std::max_element(gen.begin(), gen.end(),
 //                                              [](auto& c1, auto& c2) { return c1.fitness > c2.fitness; });
-        double max_fitness = 0.9;
-        std::uniform_int_distribution<> chromosome_index(0, chromosomes.size());
-        std::uniform_real_distribution<> fitness_range(0.0, 1.0);
-//        for (int i = 0; i < chromosomes.size(); ++i)
-//        {
-//            while(true)
-//            {
-//                int index = random(chromosome_index);
-////                double fitness = chromosomes[index].fitness;
-//                double fitness = 0.2;
 
-//                if (random(fitness_range) < fitness / max_fitness)
-//                {
-//                    selected.push_back(chromosomes[index]);
-//                    break;
-//                }
-//            }
-//        }
+        double max_fitness = 0.9;
+        std::uniform_int_distribution<> chromosome_index(0, gen.size());
+        std::uniform_real_distribution<> fitness_range(0.0, 1.0);
 
         auto select = [&](auto& random)
         {
             while(true)
             {
                 int index = random(chromosome_index);
-//                double fitness = chromosomes[index].fitness;
+//                double fitness = gen[index].fitness;
                 double fitness = 0.2;
 
                 if (random(fitness_range) < fitness / max_fitness)
@@ -117,36 +78,13 @@ struct selector
 
     index_pair operator()(generation& gen, ranking)
     {
-        auto& chromosomes = gen.gen;
-//        std::vector<chromosome> selected;
-//        selected.reserve(chromosomes.size());
-//        index_pair selected;
-
-//        std::vector<int> ranks(chromosomes.size());
-//        std::iota(ranks.begin(), ranks.end(), 1);
-
-//        std::sort(chromosomes.begin(), chromosomes.end(), [](auto& c1, auto& c2) { return c1.fitness < c2.fitness; });
+//        std::sort(gen.begin(), gen.end(), [](auto& c1, auto& c2) { return c1.fitness < c2.fitness; });
 
         int sum = 0;
-        for (int i = 0; i < chromosomes.size(); ++i)
+        for (int i = 0; i < gen.size(); ++i)
             sum += i;
 
         std::uniform_int_distribution<> dis_sum(0, sum);
-
-//        for (int i = 0; i < chromosomes.size(); ++i)
-//        {
-//            int probability = random(dis_sum);
-//            int index = 0;
-
-//            while (probability > 0)
-//            {
-////                probability -= ranks[index];
-//                probability -= index + 1;
-//                ++index;
-//            }
-
-//            selected.push_back(chromosomes[index]);
-//        }
 
         auto select = [&](auto& random)
         {
@@ -155,7 +93,6 @@ struct selector
 
             while (probability > 0)
             {
-//                probability -= ranks[index];
                 probability -= index + 1;
                 ++index;
             }
@@ -185,36 +122,21 @@ struct selector
 
     index_pair operator()(generation& gen, tournament)
     {
-        auto& chromosomes = gen.gen;
-//        std::vector<chromosome> selected;
-//        selected.reserve(chromosomes.size());
-//        index_pair selected;
+        std::uniform_int_distribution<> chromosome_index(0, gen.size());
 
         int tournament_size = 5;
-        std::vector<chromosome> tour;
+        std::vector<double> tour;
         tour.reserve(tournament_size);
-
-        std::uniform_int_distribution<> chromosome_index(0, chromosomes.size());
-
-//        for (int i = 0; i < chromosomes.size(); ++i)
-//        {
-//            tour.clear();
-
-//            for (int j = 0; j < tournament_size; ++j)
-//                tour.push_back(chromosomes[random(chromosome_index)]);
-
-////            std::sort(tour.begin(), tour.end(), [](auto& c1, auto& c2) { return c1.fitness > c2.fitness });
-//            selected.push_back(tour[0]);
-//        }
 
         auto select = [&](auto random)
         {
             tour.clear();
 
-            for (int j = 0; j < tournament_size; ++j)
-                tour.push_back(chromosomes[random(chromosome_index)]);
+            for (int j = 0; j < tournament_size; ++j);
+//                tour.push_back(gen[random(chromosome_index)].fitness);
 
-//            std::sort(tour.begin(), tour.end(), [](auto& c1, auto& c2) { return c1.fitness > c2.fitness });
+            std::sort(tour.begin(), tour.end());
+
             return tour.front();
         };
 
