@@ -34,6 +34,8 @@ chromosome genetic_algorithm::run()
         gen = std::move(next_gen);
     }
 
-    int x = 5;
-    return chromosome();
+//    int x = 5;
+    auto it = std::max_element(gen.begin(), gen.end(), [](auto& c1, auto& c2) { return c1.fitness > c2.fitness; });
+
+    return *it;
 }

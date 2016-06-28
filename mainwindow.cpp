@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent) :
     model->setHorizontalHeaderItem(4, new QStandardItem(QString("Petak")));
 
     ui->tableView->setModel(model);
+
+    fill_table();
 }
 
 MainWindow::~MainWindow()
@@ -27,12 +29,12 @@ void MainWindow::fill_table()
 {
     std::vector<course_class> classes = get::courses();
 
-    genetic_algorithm algorithm(30, 4, 2, 5);
+    genetic_algorithm algorithm(30, 600, 2, 5);
     chromosome chrom = algorithm.run();
 
-    generator m_generator(1);
-    generation gener = m_generator.generate();
-    chrom = gener.at(0);
+//    generator m_generator(1);
+//    generation gener = m_generator.generate();
+//    chrom = gener.at(0);
 
     for(int i=0; i<chrom.schedule.size(); ++i)
     {
