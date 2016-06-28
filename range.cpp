@@ -11,7 +11,7 @@ namespace range
 
     index_pair day()
     {
-        return index_pair(0, 4);
+        return index_pair(0, 5);
     }
 
     index_pair count()
@@ -22,22 +22,22 @@ namespace range
     index_pair course()
     {
 //        return index_pair(0, repository::get_instance().courses_count());
-        return index_pair(0, get::courses().size() - 1);
+        return index_pair(0, get::courses().size());
     }
 
     index_pair room()
     {
-        return index_pair(0, get::rooms().size() - 1);
+        return index_pair(0, get::rooms().size());
     }
 
     index_pair professor()
     {
-        return index_pair(0, get::professors().size() - 1);
+        return index_pair(0, get::professors().size());
     }
 
     index_pair student_group()
     {
-        return index_pair(0, get::student_groups().size() - 1);
+        return index_pair(0, get::student_groups().size());
     }
 
     distribution distribution_of(type t)
