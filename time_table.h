@@ -28,7 +28,7 @@ struct class_data
 
     void print()
     {
-        qDebug() << "class_data:" << time << course << count << professor;
+        qDebug() << "class_data:" << "time" << time << "course" << course << "count" << count << "professor" << professor;
     }
 
 
