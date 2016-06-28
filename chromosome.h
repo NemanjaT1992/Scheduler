@@ -2,6 +2,7 @@
 #define CHROMOSOME_H
 
 #include "time_table.h"
+#include "time_table.h"
 
 class chromosome
 {

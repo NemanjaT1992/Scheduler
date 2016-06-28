@@ -22,22 +22,22 @@ namespace range
     index_pair course()
     {
 //        return index_pair(0, repository::get_instance().courses_count());
-        return index_pair(0, get::courses().size());
+        return index_pair(0, get::courses().size() - 1);
     }
 
     index_pair room()
     {
-        return index_pair(0, get::rooms().size());
+        return index_pair(0, get::rooms().size() - 1);
     }
 
     index_pair professor()
     {
-        return index_pair(0, get::professors().size());
+        return index_pair(0, get::professors().size() - 1);
     }
 
     index_pair student_group()
     {
-        return index_pair(0, get::student_groups().size());
+        return index_pair(0, get::student_groups().size() - 1);
     }
 
     distribution distribution_of(type t)
