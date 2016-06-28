@@ -14,7 +14,7 @@ void genetic_algorithm::run()
 
 //    while (evaluate.max_fitness < 1.0)
 //    {
-//        generation next_gen = select.elitism(gen);
+//        generation next_gen = std::move(select.elitism(gen));
 
 //        while (next_gen.size() < generation_size)
 //        {
@@ -26,7 +26,7 @@ void genetic_algorithm::run()
 //        }
 
 //        std::for_each(next_gen.begin() + select.elitism_rate, next_gen.end(), mutate);
-//        std::for_each(next_gen.begin() + select.elitism_rate, next_gen.end(), evaluate);
+//        std::for_each(next_gen.begin(), next_gen.end(), evaluate);
 
 //        gen = std::move(next_gen);
 //    }
