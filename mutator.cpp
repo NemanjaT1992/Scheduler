@@ -80,5 +80,8 @@ void mutator::mutate_base(chromosome& c, F&& f)
     auto class_index = range::distribution_of(table[day]);
     int class_ = random(class_index);
 
+    if (class_ == table[day].size())
+        return;
+
     f(table, random, day_index, day, class_);
 }
