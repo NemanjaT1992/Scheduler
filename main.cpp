@@ -46,9 +46,9 @@ int main(int argc, char *argv[])
     auto dis = range::distribution_of(type::hours);
     range::distribution_of(type::course);
 
-    random_generator r;
-    for (int i = 0; i < 10; ++i)
-        qDebug () << r(dis);
+//    random_generator r;
+//    for (int i = 0; i < 10; ++i)
+//        qDebug () << r(dis);
 
     return a.exec();
 }

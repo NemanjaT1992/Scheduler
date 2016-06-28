@@ -6,20 +6,6 @@
 
 #include "chromosome.h"
 
-class generation
-{
-private:
-    int size;
-
-public:
-    std::vector<chromosome> gen;
-
-public:
-    generation();
-    generation(int size);
-
-    void insert(chromosome chr);
-    void print();
-};
+using generation = std::vector<chromosome>;
 
 #endif // GENERATION_H

@@ -30,3 +30,19 @@ chromosome& chromosome::operator=(chromosome&& other)
 
     return *this;
 }
+
+void chromosome::initialize_chrom()
+{
+    time_table tt;
+    for(int i=0; i<get::rooms().size(); ++i)
+        schedule.push_back(tt);
+}
+
+void chromosome::print()
+{
+    for(int i=0; i<schedule.size(); ++i)
+    {
+        qDebug() << "-------------room" << i;
+        schedule[i].print();
+    }
+}

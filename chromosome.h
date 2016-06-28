@@ -2,6 +2,7 @@
 #define CHROMOSOME_H
 
 #include "time_table.h"
+#include "repository.h"
 
 class chromosome
 {
@@ -15,6 +16,9 @@ public:
 
     chromosome& operator=(const chromosome& other);
     chromosome& operator=(chromosome&& other);
+
+    void initialize_chrom();
+    void print();
 };
 
 #endif // CHROMOSOME_H

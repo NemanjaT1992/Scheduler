@@ -19,33 +19,32 @@ constexpr double priority = 1.0;
 
 struct class_data
 {
-    class_data(int8_t d, int8_t t, int8_t course, int8_t count, int8_t r, int8_t s)
-        : day(d)
-        ,time(t)
+    class_data(int8_t t, int8_t course, int8_t count, int8_t p)
+        :time(t)
         ,course(course)
         ,count(count)
-        ,room(r)
-        ,student_group(s)
+        ,professor(p)
+//        ,student_group(s)
     {
     }
 
     void print()
     {
-        qDebug() << "class_data:"<< day << time << course << count << room << student_group;
+        qDebug() << "class_data:" << "time:" << time << "course:" << course << "count:" << count << "professor:" << professor;
     }
 
-    int8_t day;
     int8_t time;
     int8_t course;
     int8_t count;
-    int8_t room;
-    int8_t student_group;
+//    int8_t room;
+    int8_t professor;
+//    int8_t student_group;
 };
 
 class time_table
 {
 private:
-    using container = std::vector<class_data>;
+    using container = std::vector<std::vector<class_data>>;
     using value = container::value_type;
 
     container table;
@@ -64,11 +63,10 @@ public:
     container::iterator end();
     container::const_iterator begin() const;
     container::const_iterator end() const;
-    void push_back(class_data cl_data);
+    void push_back(int ind, class_data cl_data);
 
     container get_table();
     int size();
-    bool has_same();
     void print();
 };
 

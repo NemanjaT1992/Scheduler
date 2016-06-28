@@ -2,6 +2,7 @@
 
 time_table::time_table()
 {
+    table.resize(5);
 }
 
 time_table::time_table(const time_table& other)
@@ -58,9 +59,9 @@ time_table::container::const_iterator time_table::end() const
     return table.cend();
 }
 
-void time_table::push_back(class_data cl_data)
+void time_table::push_back(int ind, class_data cl_data)
 {
-    table.push_back(std::move(cl_data));
+    table[ind].push_back(std::move(cl_data));
 }
 
 time_table::container time_table::get_table()
@@ -71,17 +72,28 @@ int time_table::size()
 {
     return table.size();
 }
-bool time_table::has_same()
-{
-    for(int i = 0; i < table.size(); i++)
-        for(int j = i + 1; j < table.size(); ++j)
-            if(table[i].course == table[j].course && table[i].student_group == table[j].student_group)
-                return true;
-    return false;
-}
 
 void time_table::print()
 {
     for(int i=0; i<table.size(); ++i)
-        table.at(i).print();
+        for(int j=0; j<table.at(i).size(); ++j)
+        {
+            qDebug() << i << "," << j;
+            class_data cl_data = table.at(i).at(j);
+//            if(cl_data)
+//                qDebug() << "cl_data:";
+            cl_data.print();
+        }
 }
+
+
+
+
+
+
+
+
+
+
+
+
