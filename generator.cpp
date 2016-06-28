@@ -10,89 +10,42 @@ generator::generator(int generation_length)
 generation generator::generate()
 {
     generation f_generation(generation_length);
-    qDebug() << "generation_length:" << generation_length;
 
     std::vector<professor> professors = repository::get_instance().get_professors();
     std::vector<course_class> courses = repository::get_instance().get_courses();
 
-    for(int i=0; i<generation_length; ++i)
+    for(int g=0; g<generation_length; ++g)
     {
-        chromosome chrom;
-        chrom.schedule.clear();
-        for(int p=0; p<professors.size(); ++p)
+        f_generation[g].initialize_chrom();
+        for(int j=0; j<courses.size(); ++j)
+            courses[j].clear_professor_availability();
+//        time_table tt;
+
+        for(int i=0; i<courses.size(); ++i)
         {
-            professor infoProf = professors.at(p);
-            time_table tt = time_table();
-//            professor prof(p, infoProf.name, infoProf.last_name, infoProf.courses, infoProf.available);
-
-            int professor_course_count = professors.at(p).courses.size();
-            qDebug() << "professor_course_count: " << professor_course_count;
-            for(int c=0; c<professor_course_count; ++c)
+            for(int c=0; c<courses.at(i).professors.size(); ++c)
             {
-                std::uniform_int_distribution<> dis(0, 4);
+                auto dis = range::distribution_of(type::day);
                 int8_t day = random(dis);
-                dis = std::uniform_int_distribution<> (0, constants::hours);
+                dis = range::distribution_of(type::hours);
                 int8_t time = random(dis);
-                int8_t course = professors.at(p).courses.at(c);
-                int fond = courses.at(course).fond;
-                int8_t count = 0;
+                int8_t course = courses.at(i).id;
+                int8_t count = courses.at(i).fond;
+                int8_t prof = courses.at(i).get_professor();
 
-                int last_count = 0;
-                if(fond <= 2)
-                {
-                    count = fond;
-                }
-                else
-                {
-                    dis = std::uniform_int_distribution<> (0, 100);
-                    int dividing = random(dis);
-                    if(dividing < 50)
-                    {
-                        count = fond;
-                    }
-                    else
-                    {
-                        while(dividing >= 50 && last_count != fond)
-                        {
-                            std::uniform_int_distribution<> dis(0, 4);
-                            day = random(dis);
-                            dis = std::uniform_int_distribution<> (0, constants::hours);
-                            time = random(dis);
-                            int course = professors.at(p).courses.at(c);
-                            dis = std::uniform_int_distribution<> (last_count, fond);
-                            count = random(dis);
-                            last_count = count;
-
-                            dis = std::uniform_int_distribution<> (0, repository::get_instance().rooms_count());
-                            int8_t room = random(dis);
-                            dis = std::uniform_int_distribution<> (0, repository::get_instance().student_groups_count());
-                            int8_t student_group = random(dis);
-                            class_data cl_data(time, course, count, room, student_group);
-                            tt.push_back(cl_data);
-//                            professors.at(p).table.push_back(cl_data);
-//                            prof.table.push_back(cl_data);
-//                            chrom.schedule.push_back(tt);
-                        }
-                    }
-                }
-                dis = std::uniform_int_distribution<> (0, repository::get_instance().rooms_count());
+                dis = range::distribution_of(type::room);
                 int8_t room = random(dis);
-                dis = std::uniform_int_distribution<> (0, repository::get_instance().student_groups_count());
-                int8_t student_group = random(dis);
 
-                class_data cl_data(time, course, count, room, student_group);
-                tt.push_back(cl_data);
-//                professors.at(p).table.push_back(cl_data);
-//                prof.table.push_back(cl_data);
-//                chrom.schedule.push_back(tt);
-//                chrom.schedule.at(p).table.push_back(cl_data);
-                qDebug() << c;
+                class_data cl_data(time, course, count, prof);
+
+//                tt.push_back(day, cl_data);
+                f_generation[g].schedule[room].push_back(day, cl_data);
             }
-            chrom.schedule.push_back(tt);
-//            qDebug() << "chrom added:" << c;
         }
-        f_generation.push_back(chrom);
+        qDebug() << "---------------------------------------------------chromosome" << g;
+        f_generation[g].print();
+
+//        tt.print();
     }
-//    f_generation.print();
     return f_generation;
 }

@@ -48,11 +48,11 @@ repository::repository()
     bool profs_loaded = load_professors("professors.txt");
     bool classes_loaded = load_classes("classes.txt");
     bool rooms_loaded = load_rooms("rooms.txt");
-    bool groups_loaded = load_student_groups("student_groups.txt");
+//    bool groups_loaded = load_student_groups("student_groups.txt");
     qDebug() << "professors_loaded:" << profs_loaded;
     qDebug() << "classes_loaded:" << classes_loaded;
     qDebug() << "rooms_loaded:" << rooms_loaded;
-    qDebug() << "groups_loaded:" << groups_loaded;
+//    qDebug() << "groups_loaded:" << groups_loaded;
 
     for(int i=0; i<professors.size(); ++i)
         professors.at(i).print();
@@ -111,7 +111,11 @@ bool repository::load_classes(QString fileName)
         {
             QString line = in_stream.readLine();
             QStringList line_elements = line.split("|");
-            course_class course(line_elements.at(0).toInt(), line_elements[1], line_elements[2].toInt());
+            QStringList profsList = line_elements.at(4).split(",");
+            std::vector<int> profs;
+            for(int i=0; i<profsList.length(); ++i)
+                profs.push_back(profsList.at(i).toInt());
+            course_class course(line_elements.at(0).toInt(), line_elements[1], line_elements[2].toInt(), line_elements[3].toInt(), profs);
             courses.push_back(course);
         }
         inputFile.close();

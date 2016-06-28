@@ -17,18 +17,18 @@ namespace constants
 
 struct class_data
 {
-    class_data(int8_t t, int8_t course, int8_t count, int8_t r, int8_t s)
+    class_data(int8_t t, int8_t course, int8_t count, int8_t p)
         :time(t)
         ,course(course)
         ,count(count)
-        ,professor(r)
-        ,student_group(s)
+        ,professor(p)
+//        ,student_group(s)
     {
     }
 
     void print()
     {
-        qDebug() << "class_data:" << time << course << count << professor << student_group;
+        qDebug() << "class_data:" << time << course << count << professor;
     }
 
 
@@ -61,11 +61,10 @@ public:
     container::iterator end();
     container::const_iterator begin() const;
     container::const_iterator end() const;
-    void push_back(class_data cl_data);
+    void push_back(int ind, class_data cl_data);
 
     container get_table();
     int size();
-    bool has_same();
     void print();
 };
 
