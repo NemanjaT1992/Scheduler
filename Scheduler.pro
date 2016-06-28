@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     random_generator.cpp \
     student_group.cpp \
     range.cpp \
-    selector.cpp
+    selector.cpp \
+    genetic_algorithm.cpp
 
 HEADERS  += mainwindow.h \
     chromosome.h \
@@ -45,7 +46,8 @@ HEADERS  += mainwindow.h \
     generator.h \
     student_group.h \
     evaluation.h \
-    selector.h
+    selector.h \
+    genetic_algorithm.h
 
 
 FORMS    += mainwindow.ui

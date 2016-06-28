@@ -11,6 +11,7 @@
 #include "repository.h"
 #include "range.h"
 #include "selector.h"
+#include "genetic_algorithm.h"
 
 double test_eval(chromosome& c) { return 3.0; }
 
@@ -52,7 +53,10 @@ int main(int argc, char *argv[])
     for (int i = 0; i < 10; ++i)
         qDebug () << r(dis);
 
-    selector sel;
+//    selector sel;
+
+    genetic_algorithm alg(30, 4, 2, 5);
+    alg.run();
 
     return a.exec();
 }

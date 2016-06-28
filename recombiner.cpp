@@ -19,8 +19,8 @@ recombiner::children_pair recombiner::recombine(chromosome &c1, chromosome &c2)
 
     for(int i = intersect; i < size; ++i )
     {
-        time_table& time_table_1 = c1.schedule[i].get_table();
-        time_table& time_table_2 = c2.schedule[i].get_table();
+        time_table& time_table_1 = c1.schedule[i];
+        time_table& time_table_2 = c2.schedule[i];
 
 
         for(int j = 0; j < 5; ++j)
@@ -37,7 +37,10 @@ recombiner::children_pair recombiner::recombine(chromosome &c1, chromosome &c2)
             find_class_data(c1, child_2, day_2);
         }
     }
+
+    return children_pair(child_1, child_2);
 }
+
 void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child, std::vector<class_data> day)
 {
     for(int k = 0; k < day.size() ; ++k)
@@ -52,7 +55,7 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
         do
         {
             room_index++;
-            time_table& other_table = reff_chromosome.schedule[room_index].get_table();
+            time_table& other_table = reff_chromosome.schedule[room_index];
 
             // defines index of day
             day_index = -1;
@@ -81,6 +84,7 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
            child.schedule[room_index].get_table()[day_index].push_back(reff_data);
     }
 }
+
 //for(int k = 0; k < day_1.size() ; ++k)
 //{
 

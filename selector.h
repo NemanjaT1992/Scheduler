@@ -12,7 +12,7 @@ struct selector
     std::uniform_int_distribution<> fitness_range;
     random_generator random;
 
-    selector();
+    selector(int elitism_rate, int tournament_size);
 
     index_pair operator()(generation& gen);
     index_pair roulette(generation& gen);

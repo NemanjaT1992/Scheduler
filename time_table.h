@@ -7,19 +7,17 @@
 
 namespace constants
 {
-
     constexpr int hours = 12;
 
-
-//evaluation priorities constants
-constexpr double priority = 1.0;
+    //evaluation priorities constants
+    constexpr double priority = 1.0;
 
 
 }
 
 struct class_data
 {
-    class_data(int8_t d, int8_t t, int8_t course, int8_t count, int8_t r, int8_t s)
+    class_data(int8_t t, int8_t course, int8_t count, int8_t r, int8_t s)
         :time(t)
         ,course(course)
         ,count(count)
@@ -44,7 +42,7 @@ struct class_data
 class time_table
 {
 private:
-    using container = std::vector<class_data>;
+    using container = std::vector<std::vector<class_data>>;
     using value = container::value_type;
 
     container table;

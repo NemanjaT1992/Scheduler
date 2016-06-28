@@ -44,7 +44,6 @@ namespace range
     {
         auto pair = types[static_cast<int>(t)]();
 
-        return distribution(pair.first, pair.second);
+        return distribution(pair.first, pair.second - 1);
     }
-
 }

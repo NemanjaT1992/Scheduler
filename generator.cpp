@@ -67,7 +67,7 @@ generation generator::generate()
                             int8_t room = random(dis);
                             dis = std::uniform_int_distribution<> (0, repository::get_instance().student_groups_count());
                             int8_t student_group = random(dis);
-                            class_data cl_data(day, time, course, count, room, student_group);
+                            class_data cl_data(time, course, count, room, student_group);
                             tt.push_back(cl_data);
 //                            professors.at(p).table.push_back(cl_data);
 //                            prof.table.push_back(cl_data);
@@ -80,7 +80,7 @@ generation generator::generate()
                 dis = std::uniform_int_distribution<> (0, repository::get_instance().student_groups_count());
                 int8_t student_group = random(dis);
 
-                class_data cl_data(day, time, course, count, room, student_group);
+                class_data cl_data(time, course, count, room, student_group);
                 tt.push_back(cl_data);
 //                professors.at(p).table.push_back(cl_data);
 //                prof.table.push_back(cl_data);

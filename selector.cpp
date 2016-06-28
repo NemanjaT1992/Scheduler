@@ -1,9 +1,11 @@
 #include "selector.h"
 
-selector::selector()
-    : elitism_rate(2)
+selector::selector(int elitism_rate, int tournament_size)
+//    : elitism_rate(2)
+    : elitism_rate(elitism_rate)
     , fitness_range(0.0, 1.0)
-    , tournament_size(5)
+//    , tournament_size(5)
+    , tournament_size(tournament_size)
 {
 }
 
@@ -96,19 +98,19 @@ index_pair selector::tournament(generation& gen)
 {
     std::uniform_int_distribution<> chromosome_index(0, gen.size());
 
-    std::vector<double> tour;
-    tour.reserve(tournament_size);
+    std::vector<double> arena;
+    arena.reserve(tournament_size);
 
     auto select = [&](auto& random)
     {
-        tour.clear();
+        arena.clear();
 
         for (int j = 0; j < tournament_size; ++j);
 //                tour.push_back(gen[random(chromosome_index)].fitness);
 
-        std::sort(tour.begin(), tour.end());
+        std::sort(arena.begin(), arena.end());
 
-        return tour.front();
+        return arena.front();
     };
 
     return index_pair(select(random), select(random));
