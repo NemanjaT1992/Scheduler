@@ -41,7 +41,7 @@ recombiner::children_pair recombiner::recombine(chromosome &c1, chromosome &c2)
     return children_pair(child_1, child_2);
 }
 
-void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child, std::vector<class_data> day)
+void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child, std::vector<class_data>& day)
 {
     for(int k = 0; k < day.size() ; ++k)
     {

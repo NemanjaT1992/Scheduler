@@ -13,7 +13,7 @@ public:
 
     recombiner();
     children_pair recombine(chromosome& c1, chromosome& c2);
-    void find_class_data(chromosome& reff_chromosome, chromosome& child, std::vector<class_data> day);
+    void find_class_data(chromosome& reff_chromosome, chromosome& child, std::vector<class_data>& day);
 };
 
 #endif // RECOMBINER_H
