@@ -85,10 +85,17 @@ bool repository::load_professors(QString fileName)
 
             for(int i=3; i<line_elements.length(); ++i)
             {
-                QString day_avail = line_elements.at(i);
+                auto day_avail = line_elements.at(i).split(" ", QString::SkipEmptyParts);
+
+                if (day_avail.size() == 0)
+                {
+                    avail.push_back({});
+                    continue;
+                }
+
                 std::vector<int> day_vector;
                 for(int i=0; i<day_avail.length(); ++i)
-                    day_vector.push_back(day_avail.mid(i, 1).toInt());
+                    day_vector.push_back(day_avail.at(i).toInt());
                 avail.push_back(day_vector);
             }
 

@@ -1,5 +1,8 @@
 #include "selector.h"
 
+#include <algorithm>
+#include <utility>
+
 selector::selector(int elitism_rate, int tournament_size)
 //    : elitism_rate(2)
     : elitism_rate(elitism_rate)
@@ -11,9 +14,9 @@ selector::selector(int elitism_rate, int tournament_size)
 
 index_pair selector::roulette(generation& gen)
 {
-//        double sum = std::accumulate(gen.begin(), gen.end(), 0.0, [](double prev, auto& c) { return prev + c.fitness; });
+    double sum = std::accumulate(gen.begin(), gen.end(), 0.0, [](double prev, auto& c) { return prev + c.fitness; });
 
-    double sum = 30.0;
+//    double sum = 30.0;
     std::uniform_real_distribution<> dis_sum(0.0, sum);
 
     auto select = [&](auto& random)
@@ -23,11 +26,11 @@ index_pair selector::roulette(generation& gen)
 
         while (probability > 0)
         {
-//                probability -= gen[index].fitness;
+            probability -= gen[index].fitness;
             ++index;
         }
 
-        return index;
+        return index >= gen.size() ? index - 1 : index;
     };
 
     return index_pair(select(random), select(random));
@@ -35,19 +38,21 @@ index_pair selector::roulette(generation& gen)
 
 index_pair selector::stochastic_roulette(generation& gen)
 {
-//        double max_fitness = std::max_element(gen.begin(), gen.end(),
-//                                              [](auto& c1, auto& c2) { return c1.fitness > c2.fitness; });
+    auto chromosome = std::max_element(gen.begin(), gen.end(),
+                                          [](auto& c1, auto& c2) { return c1.fitness > c2.fitness; });
 
-    double max_fitness = 0.9;
-    std::uniform_int_distribution<> chromosome_index(0, gen.size());
+    double max_fitness = chromosome->fitness;
+
+//    double max_fitness = 0.9;
+    auto chromosome_index = range::distribution_of(gen);
 
     auto select = [&](auto& random)
     {
         while(true)
         {
             int index = random(chromosome_index);
-//                double fitness = gen[index].fitness;
-            double fitness = 0.2;
+            double fitness = gen[index].fitness;
+//            double fitness = 0.2;
 
             if (random(fitness_range) < fitness / max_fitness)
                 return index;
@@ -59,7 +64,7 @@ index_pair selector::stochastic_roulette(generation& gen)
 
 index_pair selector::ranking(generation& gen)
 {
-//        std::sort(gen.begin(), gen.end(), [](auto& c1, auto& c2) { return c1.fitness < c2.fitness; });
+    std::sort(gen.begin(), gen.end(), [](auto& c1, auto& c2) { return c1.fitness < c2.fitness; });
 
     int sum = 0;
     for (int i = 0; i < gen.size(); ++i)
@@ -78,7 +83,7 @@ index_pair selector::ranking(generation& gen)
             ++index;
         }
 
-        return index;
+        return index >= gen.size() ? index - 1 : index;
     };
 
     return index_pair(select(random), select(random));
@@ -86,7 +91,7 @@ index_pair selector::ranking(generation& gen)
 
 std::vector<chromosome> selector::elitism(generation& gen)
 {
-//    std::sort(gen.begin(), gen.end(), [](auto& c1, auto& c2) { c1.fitness > c2.fitness; });
+    std::sort(gen.begin(), gen.end(), [](auto& c1, auto& c2) { return c1.fitness > c2.fitness; });
     std::vector<chromosome> next_gen;
     next_gen.reserve(elitism_rate);
 
@@ -98,7 +103,7 @@ std::vector<chromosome> selector::elitism(generation& gen)
 
 index_pair selector::tournament(generation& gen)
 {
-    std::uniform_int_distribution<> chromosome_index(0, gen.size());
+    auto chromosome_index = range::distribution_of(gen);
 
     std::vector<double> arena;
     arena.reserve(tournament_size);
@@ -107,13 +112,16 @@ index_pair selector::tournament(generation& gen)
     {
         arena.clear();
 
-        for (int j = 0; j < tournament_size; ++j);
-//                tour.push_back(gen[random(chromosome_index)].fitness);
+        for (int j = 0; j < tournament_size; ++j)
+            arena.push_back(gen[random(chromosome_index)].fitness);
 
-        std::sort(arena.begin(), arena.end());
+        std::sort(arena.begin(), arena.end(), [](double first, double second) { return first > second; });
 
         return arena.front();
     };
 
-    return index_pair(select(random), select(random));
+    int first = select(random);
+    int second = select(random);
+
+    return index_pair(first, second);
 }

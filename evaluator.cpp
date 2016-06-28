@@ -11,8 +11,6 @@ evaluator::evaluator()
 
 void evaluator::operator ()(chromosome& c)
 {
-    double& eval = c.fitness;
-
     for(int i = 0; i < c.schedule.size(); ++i)
     {
         time_table& table = c.schedule[i];
@@ -27,9 +25,9 @@ void evaluator::operator ()(chromosome& c)
             {
                 class_data& reff_data = current_day[k];
 
-                available(eval, reff_data, j);
-                room_time_overlap(eval, table, reff_data, k, j);
-                professor_time_overlap(eval, c, reff_data, i, j);
+                available(c.fitness, reff_data, j);
+                room_time_overlap(c.fitness, table, reff_data, k, j);
+                professor_time_overlap(c.fitness, c, reff_data, i, j);
 
                 // maybe will be considered depending on recombination
                  //   same_classes(eval, reff_data, j);
@@ -39,7 +37,7 @@ void evaluator::operator ()(chromosome& c)
 
     }
 
-   max_fitness = eval > max_fitness ? eval : max_fitness;
+   max_fitness = c.fitness > max_fitness ? c.fitness : max_fitness;
 }
 void evaluator::available(double& eval, class_data& reff_data, int day_index)
 {

@@ -11,16 +11,19 @@ chromosome::chromosome()
 chromosome::chromosome(const chromosome& other)
 {
     schedule = other.schedule;
+    fitness = other.fitness;
 }
 
 chromosome::chromosome(chromosome&& other)
 {
     schedule = std::move(other.schedule);
+    fitness = std::move(other.fitness);
 }
 
 chromosome& chromosome::operator=(const chromosome& other)
 {
     schedule = other.schedule;
+    fitness = other.fitness;
 
     return *this;
 }
@@ -28,6 +31,7 @@ chromosome& chromosome::operator=(const chromosome& other)
 chromosome& chromosome::operator=(chromosome&& other)
 {
     schedule = std::move(other.schedule);
+    fitness = std::move(other.fitness);
 
     return *this;
 }

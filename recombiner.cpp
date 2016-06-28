@@ -50,35 +50,39 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
 
 
         bool found = false;
-        int room_index = -1; // defines index/identificator of room
-        int day_index;
-        do
+        int room_index = 0; // defines index/identificator of room
+        int day_index = 0;
+        while(!found && room_index < reff_chromosome.schedule.size())
         {
-            room_index++;
             time_table& other_table = reff_chromosome.schedule[room_index];
 
             // defines index of day
-            day_index = -1;
-            do
+            day_index = 0;
+            while (!found && day_index < 5)
             {
-                day_index++;
                 std::vector<class_data> other_day = other_table[day_index];
-                int n = -1; // defines index of class_data in day_array
-                do
+                int n = 0; // defines index of class_data in day_array
+                while (!found && n < other_day.size())
                 {
-                    n++;
                     if(other_day[n].professor == reff_data.professor && other_day[n].course == reff_data.course)
                     {
                         reff_data.time = other_day[n].time;
                         found = true;
+                        break;
                     }
 
-                }while(!found && n < other_day.size());
+                    n++;
+                }
+                if (found)
+                    break;
 
+                day_index++;
+            }
+            if (found)
+                break;
 
-            }while(!found && day_index < 5);
-
-        }while(!found && room_index < reff_chromosome.schedule.size());
+            room_index++;
+        }
 
         if(found)
            child.schedule[room_index].get_table()[day_index].push_back(reff_data);

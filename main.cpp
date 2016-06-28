@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    genetic_algorithm alg(30, 4, 2, 5);
+    genetic_algorithm alg(6, 400, 2, 5);
     alg.run();
 
     return a.exec();

@@ -41,7 +41,7 @@ namespace range
     template<typename T>
     distribution distribution_of(T&& t)
     {
-        return distribution(0, t.size() - 1);
+        return distribution(0, t.size() ? t.size() - 1 : 0);
     }
 
     distribution distribution_of(type t);
