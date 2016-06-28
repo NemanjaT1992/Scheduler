@@ -7,7 +7,7 @@ genetic_algorithm::genetic_algorithm(int generation_size, int mutation_rate, int
 {
 }
 
-void genetic_algorithm::run()
+chromosome genetic_algorithm::run()
 {
 //    gen = generator(generation_size).generate();
 //    std::for_each(gen.begin(), gen.end(), evaluate);
@@ -30,4 +30,6 @@ void genetic_algorithm::run()
 
 //        gen = std::move(next_gen);
 //    }
+    chromosome chr;
+    return chr;
 }

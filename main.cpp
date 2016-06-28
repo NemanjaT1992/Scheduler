@@ -29,8 +29,10 @@ int main(int argc, char *argv[])
 //    qDebug () << constraint2(c);
 
     repository::get_instance();
-    generator m_generator(5);
-    m_generator.generate();
+//    generator m_generator(5);
+//    m_generator.generate();
+
+    w.fill_table();
 
 //    mutator{}(c);
 
@@ -46,8 +48,8 @@ int main(int argc, char *argv[])
 //    qDebug () << rooms.first << rooms.second;
 //    qDebug () << professors.first << professors.second;
 
-    auto dis = range::distribution_of(type::hours);
-    range::distribution_of(type::course);
+//    auto dis = range::distribution_of(type::hours);
+//    range::distribution_of(type::course);
 
 //    random_generator r;
 //    for (int i = 0; i < 10; ++i)
@@ -55,8 +57,29 @@ int main(int argc, char *argv[])
 
 //    selector sel;
 
-    genetic_algorithm alg(30, 4, 2, 5);
-    alg.run();
+//    genetic_algorithm alg(30, 4, 2, 5);
+//    alg.run();
 
     return a.exec();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -22,7 +22,7 @@ private:
 public:
     genetic_algorithm(int generation_size, int mutation_rate, int elitism_rate, int tournament_size);
 
-    void run();
+    chromosome run();
 };
 
 #endif // GENETIC_ALGORITHM_H
