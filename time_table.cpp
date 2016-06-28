@@ -60,7 +60,7 @@ time_table::container::const_iterator time_table::end() const
 
 void time_table::push_back(class_data cl_data)
 {
-    table.push_back(std::move(cl_data));
+//    table.push_back(std::move(cl_data));
 }
 
 time_table::container time_table::get_table()
@@ -73,15 +73,15 @@ int time_table::size()
 }
 bool time_table::has_same()
 {
-    for(int i = 0; i < table.size(); i++)
-        for(int j = i + 1; j < table.size(); ++j)
-            if(table[i].course == table[j].course && table[i].student_group == table[j].student_group)
-                return true;
+//    for(int i = 0; i < table.size(); i++)
+//        for(int j = i + 1; j < table.size(); ++j)
+//            if(table[i].course == table[j].course && table[i].student_group == table[j].student_group)
+//                return true;
     return false;
 }
 
 void time_table::print()
 {
-    for(int i=0; i<table.size(); ++i)
-        table.at(i).print();
+//    for(int i=0; i<table.size(); ++i)
+//        table.at(i).print();
 }

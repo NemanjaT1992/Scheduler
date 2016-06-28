@@ -7,12 +7,10 @@
 
 namespace constants
 {
-
     constexpr int hours = 12;
 
-
-//evaluation priorities constants
-constexpr double priority = 1.0;
+    //evaluation priorities constants
+    constexpr double priority = 1.0;
 
 
 }
@@ -45,7 +43,7 @@ struct class_data
 class time_table
 {
 private:
-    using container = std::vector<class_data>;
+    using container = std::vector<std::vector<class_data>>;
     using value = container::value_type;
 
     container table;

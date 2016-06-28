@@ -8,17 +8,24 @@
 class mutator
 {
 private:
-    using data_ptr = decltype(&class_data::day);
+    using mutate_handler = void(mutator::*)(chromosome&);
 
     random_generator random;
     std::uniform_int_distribution<> probability_distribution;
     int mutation_rate;
-    std::vector<data_ptr> data;
+    std::vector<mutate_handler> handlers;
 
 public:
-    mutator();
+    mutator(int mutation_rate);
 
-    chromosome operator()(chromosome& c);
+    void operator()(chromosome& c);
+    void mutate_day(chromosome& c);
+    void mutate_time(chromosome& c);
+    void swap_days(chromosome& c);
+    void swap_rooms(chromosome& c);
+
+    template<typename F>
+    void mutate_base(chromosome& c, F&& f);
 };
 
 #endif // MUTATOR_H

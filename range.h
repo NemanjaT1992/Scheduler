@@ -38,8 +38,13 @@ namespace range
 
     static std::array<getter, 7> types = { day, hours, room, count, course, student_group, professor };
 
-    distribution distribution_of(type t);
+    template<typename T>
+    distribution distribution_of(T&& t)
+    {
+        return distribution(0, t.size() - 1);
+    }
 
+    distribution distribution_of(type t);
 }
 
 #endif // RANGE_H

@@ -41,8 +41,8 @@ void mutator::mutate_time(chromosome& c)
 {
     mutate_base(c, [](auto& table, auto& random, auto& day_index, int day, int class_)
     {
-        auto time_range = range::distribution_of(type::hours);
-        int8_t value = random(time_range);
+        auto time_value = range::distribution_of(type::hours);
+        int8_t value = random(time_value);
 
         table[day][class_].time = value;
     });
