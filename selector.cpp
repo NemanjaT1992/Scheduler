@@ -84,14 +84,16 @@ index_pair selector::ranking(generation& gen)
     return index_pair(select(random), select(random));
 }
 
-index_pair selector::elitism(generation& gen)
+std::vector<chromosome> selector::elitism(generation& gen)
 {
-//        std::sort(chromosomes.begin(), chromosomes.end(), [](auto& c1, auto& c2) { c1.fitness > c2.fitness; });
+//    std::sort(gen.begin(), gen.end(), [](auto& c1, auto& c2) { c1.fitness > c2.fitness; });
+    std::vector<chromosome> next_gen;
+    next_gen.reserve(elitism_rate);
 
-    for (int i = 0; i < elitism_rate; ++i);
-//        selected.push_back(chromosomes[i]);
+    for (int i = 0; i < elitism_rate; ++i)
+        next_gen.push_back(gen[i]);
 
-    return index_pair();
+    return next_gen;
 }
 
 index_pair selector::tournament(generation& gen)

@@ -18,7 +18,7 @@ struct selector
     index_pair roulette(generation& gen);
     index_pair stochastic_roulette(generation& gen);
     index_pair ranking(generation& gen);
-    index_pair elitism(generation& gen);
+    std::vector<chromosome> elitism(generation& gen);
     index_pair tournament(generation& gen);
 };
 
