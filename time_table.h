@@ -20,25 +20,24 @@ constexpr double priority = 1.0;
 struct class_data
 {
     class_data(int8_t d, int8_t t, int8_t course, int8_t count, int8_t r, int8_t s)
-        : day(d)
-        ,time(t)
+        :time(t)
         ,course(course)
         ,count(count)
-        ,room(r)
+        ,professor(r)
         ,student_group(s)
     {
     }
 
     void print()
     {
-        qDebug() << "class_data:"<< day << time << course << count << room << student_group;
+        qDebug() << "class_data:" << time << course << count << professor << student_group;
     }
 
-    int8_t day;
+
     int8_t time;
     int8_t course;
     int8_t count;
-    int8_t room;
+    int8_t professor;
     int8_t student_group;
 };
 
