@@ -8,6 +8,7 @@ class chromosome
 {
 public:
     std::vector<time_table> schedule;
+    double fitness;
 
 public:
     chromosome();

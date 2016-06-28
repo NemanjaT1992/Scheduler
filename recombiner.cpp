@@ -9,7 +9,7 @@ recombiner::recombiner()
 
 }
 
-recombiner::children_pair recombiner::recombine(chromosome &c1, chromosome &c2)
+recombiner::children_pair recombiner::operator()(chromosome &c1, chromosome &c2)
 {
     int size = c1.schedule.size();
     int intersect = std::rand() % size;

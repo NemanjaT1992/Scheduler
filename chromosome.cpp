@@ -3,6 +3,7 @@
 #include <algorithm>
 
 chromosome::chromosome()
+    : fitness(0)
 {
 
 }

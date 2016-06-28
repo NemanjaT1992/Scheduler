@@ -2,11 +2,18 @@
 #define GENETIC_ALGORITHM_H
 
 #include "generation.h"
-//#include "evaluation.h"
+#include "evaluator.h"
 #include "selector.h"
 #include "recombiner.h"
 #include "mutator.h"
 #include "generator.h"
+
+template<typename Iter, typename F>
+void for_each_chromosome(Iter begin, Iter end, F&& handler)
+{
+    for (Iter it = begin; it != end; ++it)
+        handler(*it);
+}
 
 class genetic_algorithm
 {
@@ -14,7 +21,7 @@ private:
     int generation_size;
 
     generation gen;
-//    evaluator evaluate;
+    evaluator evaluate;
     selector select;
     recombiner recombine;
     mutator mutate;

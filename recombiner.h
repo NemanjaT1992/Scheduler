@@ -12,7 +12,7 @@ public:
     using children_pair = std::pair<chromosome,chromosome>;
 
     recombiner();
-    children_pair recombine(chromosome& c1, chromosome& c2);
+    children_pair operator()(chromosome& c1, chromosome& c2);
     void find_class_data(chromosome& reff_chromosome, chromosome& child, std::vector<class_data>& day);
 };
 

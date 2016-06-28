@@ -9,25 +9,26 @@ genetic_algorithm::genetic_algorithm(int generation_size, int mutation_rate, int
 
 void genetic_algorithm::run()
 {
-//    gen = generator(generation_size).generate();
-//    std::for_each(gen.begin(), gen.end(), evaluate);
+    gen = generator(generation_size).generate();
+    for_each_chromosome(gen.begin(), gen.end(), evaluate);
 
-//    while (evaluate.max_fitness < 1.0)
-//    {
-//        generation next_gen = std::move(select.elitism(gen));
+    while (evaluate.max_fitness < 1.0)
+    {
+        evaluate.max_fitness = 0;
+        generation next_gen = std::move(select.elitism(gen));
 
-//        while (next_gen.size() < generation_size)
-//        {
-//            index_pair parents = select(gen);
-//            children_pair children = recombine(gen[parents.first], gen[parents.second]);
+        while (next_gen.size() < generation_size)
+        {
+            index_pair parents = select.roulette(gen);
+            recombiner::children_pair children = recombine(gen[parents.first], gen[parents.second]);
 
-//            next_gen.push_back(children.first);
-//            next_gen.push_back(children.second);
-//        }
+            next_gen.push_back(std::move(children.first));
+            next_gen.push_back(std::move(children.second));
+        }
 
-//        std::for_each(next_gen.begin() + select.elitism_rate, next_gen.end(), mutate);
-//        std::for_each(next_gen.begin(), next_gen.end(), evaluate);
+        for_each_chromosome(next_gen.begin() + select.elitism_rate, next_gen.end(), mutate);
+        for_each_chromosome(next_gen.begin(), next_gen.end(), evaluate);
 
-//        gen = std::move(next_gen);
-//    }
+        gen = std::move(next_gen);
+    }
 }
