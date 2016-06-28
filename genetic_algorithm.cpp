@@ -7,7 +7,7 @@ genetic_algorithm::genetic_algorithm(int generation_size, int mutation_rate, int
 {
 }
 
-void genetic_algorithm::run()
+chromosome genetic_algorithm::run()
 {
     gen = generator(generation_size).generate();
     for_each_chromosome(gen.begin(), gen.end(), evaluate);
@@ -24,7 +24,6 @@ void genetic_algorithm::run()
         {
             index_pair parents = select.stochastic_roulette(gen);
             recombiner::children_pair children = recombine(gen[parents.first], gen[parents.second]);
-
             next_gen.push_back(std::move(children.first));
             next_gen.push_back(std::move(children.second));
         }
@@ -36,4 +35,5 @@ void genetic_algorithm::run()
     }
 
     int x = 5;
+    return chromosome();
 }
