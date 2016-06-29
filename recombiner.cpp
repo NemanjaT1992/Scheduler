@@ -69,7 +69,7 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
                     if(other_day[n].professor == reff_data.professor && other_day[n].course == reff_data.course)
                     {
                         int value = random(dis);
-                      //  if(value > 50)
+                       // if(value > 50)
                             reff_data.time = other_day[n].time;
                         found = true;
                         break;
@@ -90,7 +90,7 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
 
         if(found)
         {
-//            int value = random(dis);
+            int value = random(dis);
 //           if(value < 50)
 //               room_index = parent_room;
 //           value = random(dis);
@@ -101,41 +101,4 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
     }
 }
 
-//for(int k = 0; k < day_1.size() ; ++k)
-//{
 
-//    class_data& reff_data = day[k];
-
-
-//    bool found = false;
-//    int room_index = -1; // defines index/identificator of room
-
-//    do
-//    {
-//        room_index++;
-//        time_table& other_table = c2.schedule[room_index].get_table();
-//        int day_index = -1; // defines index of day
-//        do
-//        {
-//            day_index++;
-//            std::vector<class_data> other_day = other_table[day_index];
-//            int n = -1; // defines index of class_data in day_array
-//            do
-//            {
-//                n++;
-//                if(other_day[n].professor == reff_data.professor && other_day[n].course == reff_data.course)
-//                {
-//                    reff_data.time = other_day[n].time;
-//                    found = true;
-//                }
-
-//            }while(!found && n < other_day.size());
-
-
-//        }while(!found && day_index < 5);
-
-//    }while(!found && room_index < c2.schedule.size());
-
-//    if(found)
-//       child_1.schedule[room_index].get_table()[day_index].push_back(reff_data);
-//}

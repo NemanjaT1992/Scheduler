@@ -52,7 +52,7 @@ void MainWindow::fill_table()
 {
     std::vector<course_class> classes = get::courses();
 
-    genetic_algorithm algorithm(30, 20, 2, 5, this, 0.7);
+    genetic_algorithm algorithm(30, 50, 2, 5, this, 0.8);
     chromosome chrom = algorithm.run();
 
 //    generator m_generator(1);

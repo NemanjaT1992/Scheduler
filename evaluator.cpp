@@ -52,13 +52,13 @@ void evaluator::available(double& eval, class_data& reff_data, int day_index)
     {
         if(end_time < availability[j] || start_time > availability[j + 1])
             eval += constants::priority;
-        else
-        {
-            if(start_time >= availability[j] && start_time < availability[j + 1])
-                eval -= constants::priority;
-            if(end_time > availability[j] && end_time <= availability[j + 1] )
-                eval -= constants::priority;
-        }
+//        else
+//        {
+//            if(start_time >= availability[j] && start_time < availability[j + 1])
+//                eval -= constants::priority;
+//            if(end_time > availability[j] && end_time <= availability[j + 1] )
+//                eval -= constants::priority;
+//        }
     }
 }
 void evaluator::room_time_overlap(double& eval, time_table& table, class_data& reff_data, int index, int day_index )
@@ -72,13 +72,13 @@ void evaluator::room_time_overlap(double& eval, time_table& table, class_data& r
         int8_t other_end = other_start + day[i].count;
         if(start_time > other_end || end_time < other_end)
             eval += constants::priority;
-        else
-        {
-            if(start_time >= other_start && start_time < other_end)
-                eval -= constants::priority;
-            if(end_time > other_start && end_time <= other_end )
-                eval -= constants::priority;
-        }
+//        else
+//        {
+//            if(start_time >= other_start && start_time < other_end)
+//                eval -= constants::priority;
+//            if(end_time > other_start && end_time <= other_end )
+//                eval -= constants::priority;
+//        }
     }
 }
 void evaluator::professor_time_overlap(double& eval, chromosome& c, class_data& reff_data, int index, int day_index )
@@ -98,13 +98,13 @@ void evaluator::professor_time_overlap(double& eval, chromosome& c, class_data& 
 
                 if(start_time > other_end || end_time < other_end)
                     eval += constants::priority;
-                else
-                {
-                    if(start_time >= other_start && start_time < other_end)
-                        eval -= constants::priority;
-                    if(end_time > other_start && end_time <= other_end )
-                        eval -= constants::priority;
-                }
+//                else
+//                {
+//                    if(start_time >= other_start && start_time < other_end)
+//                        eval -= constants::priority;
+//                    if(end_time > other_start && end_time <= other_end )
+//                        eval -= constants::priority;
+//                }
             }
         }
     }
@@ -113,13 +113,13 @@ void evaluator::capacity(double& eval, class_data& data, room& room)
 {
     if(room.seats > data.student_count)
         eval += constants::priority;
-    else
-        eval -= constants::priority;
+//    else
+//        eval -= constants::priority;
 }
 void evaluator::time_off_limits(double& eval, class_data& data)
 {
     if(data.time + data.count <= constants::hours)
         eval += constants::priority;
-    else
-        eval -= constants::priority;
+//    else
+//        eval -= constants::priority;
 }

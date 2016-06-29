@@ -61,5 +61,5 @@ chromosome genetic_algorithm::run()
         }
     //auto it = std::max_element(gen.begin(), gen.end(), [](auto& c1, auto& c2) { return c1.fitness > c2.fitness; });
 
-    return res;
+    return res;                                                                                                                                                                                                                                                
 }
