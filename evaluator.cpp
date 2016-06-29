@@ -25,9 +25,20 @@ void evaluator::operator ()(chromosome& c)
             {
                 class_data& reff_data = current_day[k];
 
+                if (j == 0 && reff_data.course == 0 && reff_data.time == 0 &&
+                j == 0 && reff_data.course == 1 && reff_data.time == 1 &&
+                j == 0 && reff_data.course == 2 && reff_data.time == 2 &&
+                j == 0 && reff_data.course == 3 && reff_data.time == 3)
+                    c.fitness += constants::priority;
+
+//                if (i == 0 && reff_data.course == 1 && reff_data.time == 1)
+//                    c.fitness += constants::priority;
+//                else
+//                    c.fitness -= constants::priority * 0.1;
+
                 available(c.fitness, reff_data, j);
-                room_time_overlap(c.fitness, table, reff_data, k, j);
-                professor_time_overlap(c.fitness, c, reff_data, i, j);
+//                room_time_overlap(c.fitness, table, reff_data, k, j);
+//                professor_time_overlap(c.fitness, c, reff_data, i, j);
 
                 // maybe will be considered depending on recombination
                  //   same_classes(eval, reff_data, j);
@@ -48,10 +59,11 @@ void evaluator::available(double& eval, class_data& reff_data, int day_index)
     int8_t start_time = reff_data.time;
     for(int j = 0; j < availability.size(); j += 2)
     {
-        if(start_time >= availability[j] && start_time < availability[j + 1])
-            eval += constants::priority;
-        if(end_time > availability[j] && end_time <= availability[j + 1] )
-            eval += constants::priority;
+//        if (reff_data.professor == 0 && end_time < 4 &&
+//        if(end_time < availability[j] || start_time > availability[j + 1] )
+//            eval += constants::priority * 0.5;
+//        else
+//            eval -= constants::priority * 2;
     }
 }
 void evaluator::room_time_overlap(double& eval, time_table& table, class_data& reff_data, int index, int day_index )

@@ -12,7 +12,7 @@ chromosome genetic_algorithm::run()
     gen = generator(generation_size).generate();
     for_each_chromosome(gen.begin(), gen.end(), evaluate);
 
-    while (evaluate.max_fitness < 1.0)
+    while (evaluate.max_fitness < 5.0)
     {
         qDebug () << "max fitness: " << evaluate.max_fitness;
 
@@ -22,13 +22,13 @@ chromosome genetic_algorithm::run()
 
         while (next_gen.size() < generation_size)
         {
-            index_pair parents = select.stochastic_roulette(gen);
+            index_pair parents = select.tournament(gen);
             recombiner::children_pair children = recombine(gen[parents.first], gen[parents.second]);
             next_gen.push_back(std::move(children.first));
             next_gen.push_back(std::move(children.second));
         }
 
-        for_each_chromosome(next_gen.begin() + select.elitism_rate, next_gen.end(), mutate);
+        for_each_chromosome(next_gen.begin(), next_gen.end(), mutate);
         for_each_chromosome(next_gen.begin(), next_gen.end(), evaluate);
 
         gen = std::move(next_gen);

@@ -55,16 +55,24 @@ void mutator::swap_days(chromosome& c)
 
     int room = random(room_index);
 
-    std::swap(c.schedule[room][random(day_index)],
-            c.schedule[room][random(day_index)]);
+    int first = random(day_index);
+    int second = random(day_index);
+
+    std::swap(c.schedule[room][first],
+            c.schedule[room][second]);
 }
 
 void mutator::swap_rooms(chromosome& c)
 {
     auto room_index = range::distribution_of(c.schedule);
 
-    std::swap(c.schedule[random(room_index)],
-            c.schedule[random(room_index)]);
+    int first = random(room_index);
+    int second = random(room_index);
+
+    std::swap(c.schedule[first],
+            c.schedule[second]);
+
+    int x = 5;
 }
 
 template<typename F>
@@ -80,8 +88,11 @@ void mutator::mutate_base(chromosome& c, F&& f)
     auto class_index = range::distribution_of(table[day]);
     int class_ = random(class_index);
 
-    if (class_ == table[day].size())
+    if(class_ == table[day].size())
+    {
+        swap_days(c);
         return;
+    }
 
     f(table, random, day_index, day, class_);
 }
