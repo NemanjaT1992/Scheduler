@@ -52,12 +52,16 @@ void MainWindow::fill_table()
 {
     std::vector<course_class> classes = get::courses();
 
+<<<<<<< HEAD
     genetic_algorithm algorithm(30, 50, 2, 5, this, 0.8);
+=======
+    genetic_algorithm algorithm(30, 100, 2, 5, this, 0.7);
+>>>>>>> 1a8c37980b73d895e1e730a491f2c329f1b15175
     chromosome chrom = algorithm.run();
 
-//    generator m_generator(1);
+//    generator m_generator(30);
 //    generation gener = m_generator.generate();
-//    chrom = gener.at(0);
+//    auto& chrom = gener.at(0);
 
     for(int i=0; i<chrom.schedule.size(); ++i)
     {

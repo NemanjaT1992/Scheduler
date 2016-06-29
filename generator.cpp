@@ -40,6 +40,7 @@ generation generator::generate()
                 class_data cl_data(time, course, count, prof, student_count);
 
 //                tt.push_back(day, cl_data);
+
                 f_generation[g].schedule[room].push_back(day, cl_data);
             }
         }
@@ -48,5 +49,6 @@ generation generator::generate()
 
 //        tt.print();
     }
+
     return f_generation;
 }
