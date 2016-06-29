@@ -15,12 +15,10 @@ chromosome genetic_algorithm::run()
     gen = generator(generation_size).generate();
     for_each_chromosome(gen.begin(), gen.end(), evaluate);
 
-<<<<<<< HEAD
+
     int  i = 0;
-    while (evaluate.max_fitness < 5)
-=======
-    while (evaluate.max_fitness < 3.5)
->>>>>>> 1a8c37980b73d895e1e730a491f2c329f1b15175
+
+    while (evaluate.max_fitness < 105)
     {
         qDebug () << "max fitness: " << evaluate.max_fitness;
 
@@ -28,13 +26,13 @@ chromosome genetic_algorithm::run()
         generation next_gen = std::move(select.elitism(gen));
         //generation next_gen;
 
-//        while(next_gen.size() < generation_size * (1 - crossover_rate))
-//        {
-//            index_pair parents = select.ranking(gen);
-//        //    qDebug() << parents.first << " , " << parents.second;
-//            next_gen.push_back(gen[parents.first]);
-//            next_gen.push_back(gen[parents.second]);
-//        }
+        while(next_gen.size() < generation_size * (1 - crossover_rate))
+        {
+            index_pair parents = select.ranking(gen);
+        //    qDebug() << parents.first << " , " << parents.second;
+            next_gen.push_back(gen[parents.first]);
+            next_gen.push_back(gen[parents.second]);
+        }
         while (next_gen.size() < generation_size)
         {
             index_pair parents = select.ranking(gen);

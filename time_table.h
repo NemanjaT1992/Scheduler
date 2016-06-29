@@ -7,10 +7,10 @@
 
 namespace constants
 {
-    constexpr int hours = 6;
+    constexpr int hours = 12;
 
     //evaluation priorities constants
-    constexpr double priority = 0.1;
+    constexpr int priority = 1;
 
 
 }

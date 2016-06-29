@@ -74,7 +74,7 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
                     if(other_day[n].professor == reff_data.professor && other_day[n].course == reff_data.course)
                     {
                         int value = random(dis);
-                       // if(value > 50)
+                        //if(value > 50)
                             reff_data.time = other_day[n].time;
                         found = true;
                         break;
@@ -95,7 +95,7 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
 
         if(found)
         {
-            int value = random(dis);
+//            int value = random(dis);
 //           if(value < 50)
 //               room_index = parent_room;
 //           value = random(dis);

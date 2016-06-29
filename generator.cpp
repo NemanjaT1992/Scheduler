@@ -27,10 +27,10 @@ generation generator::generate()
             {
                 auto dis = range::distribution_of(type::day);
                 int8_t day = random(dis);
-                dis = range::distribution_of(type::hours);
-                int8_t time = random(dis);
                 int8_t course = courses.at(i).id;
                 int8_t count = courses.at(i).fond;
+                std::uniform_int_distribution<> dis_t(0, constants::hours - count - 1);
+                int8_t time = random(dis_t);
                 int8_t prof = courses.at(i).get_professor(c);
                 int8_t student_count = courses.at(i).num_of_students /courses.at(i).professors.size() ;
 

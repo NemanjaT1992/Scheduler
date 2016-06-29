@@ -20,7 +20,11 @@ void mutator::operator()(chromosome& c)
         int index = random(handler_index);
 
         auto handler = handlers[index];
-        (this->*handler)(c);
+        mutate_day(c);
+        mutate_time(c);
+        swap_rooms(c);
+        swap_days(c);
+//        (this->*handler)(c);
     }
 }
 
@@ -41,7 +45,10 @@ void mutator::mutate_time(chromosome& c)
 {
     mutate_base(c, [](auto& table, auto& random, auto& day_index, int day, int class_)
     {
-        auto time_range = range::distribution_of(type::hours);
+       // auto time_range = range::distribution_of(type::hours);
+        int count = table[day][class_].count;
+
+        std::uniform_int_distribution<> time_range(0, constants::hours - count - 1);
         int8_t value = random(time_range);
 
         table[day][class_].time = value;
