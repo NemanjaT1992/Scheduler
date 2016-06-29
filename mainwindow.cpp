@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     model->setHorizontalHeaderItem(3, new QStandardItem(QString("Četvrtak")));
     model->setHorizontalHeaderItem(4, new QStandardItem(QString("Petak")));
 
+    model->setRowCount(constants::hours);
     ui->tableView->setModel(model);
 
     fill_table();
@@ -52,7 +53,7 @@ void MainWindow::fill_table()
 {
     std::vector<course_class> classes = get::courses();
 
-    genetic_algorithm algorithm(50, 30, 2, 5, this, 0.8);
+    genetic_algorithm algorithm(300, 150, 10, 5, this, 0.8);
 
     chromosome chrom = algorithm.run();
 
@@ -72,12 +73,15 @@ void MainWindow::fill_table()
                 for(int d=0; d<tt[k].size(); ++d)
                 {
                     class_data single = tt[k][d];
-                    day_data.append(QString(classes.at(single.course).name) + " " + QString(get::professor_at(single.professor).name)
-                                    + " " + QString::number(single.time) + " + " + QString::number(single.count) + "  ||  ");
+//                    day_data.append(QString(classes.at(single.course).name) + " " + QString(get::professor_at(single.professor).name)
+//                                    + " " + QString::number(single.time) + " + " + QString::number(single.count) + "  ||  ");
+                    day_data = classes.at(single.course).name + " " + QString(get::professor_at(single.professor).name) + " " + QString::number(single.count);
 
+                    QStandardItem *data = new QStandardItem(day_data);
+                    model->setItem(single.time,k,data);
                 }
-                QStandardItem *data = new QStandardItem(day_data);
-                model->setItem(i,k,data);
+//                QStandardItem *data = new QStandardItem(day_data);
+//                model->setItem(i,k,data);
             }
 //        }
     }

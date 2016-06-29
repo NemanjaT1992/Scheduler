@@ -4,7 +4,7 @@ creator::creator()
 {
     professor_pool.reserve(professors);
     class_pool.reserve(classes);
-    rooms_pool.reserve(rooms);
+    room_pool.reserve(rooms);
 }
 
 void creator::professors_file()

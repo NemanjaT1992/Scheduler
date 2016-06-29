@@ -18,7 +18,7 @@ chromosome genetic_algorithm::run()
 
     int  i = 0;
 
-    while (evaluate.max_fitness < 105)
+    while (evaluate.max_fitness < 91)
     {
         qDebug () << "max fitness: " << evaluate.max_fitness;
 
