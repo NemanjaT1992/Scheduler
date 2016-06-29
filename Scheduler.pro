@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     range.cpp \
     selector.cpp \
     genetic_algorithm.cpp \
-    evaluator.cpp
+    evaluator.cpp \
+    creator.cpp
 
 HEADERS  += mainwindow.h \
     chromosome.h \
@@ -49,7 +50,8 @@ HEADERS  += mainwindow.h \
     evaluation.h \
     selector.h \
     genetic_algorithm.h \
-    evaluator.h
+    evaluator.h \
+    creator.h
 
 
 FORMS    += mainwindow.ui

@@ -105,7 +105,7 @@ index_pair selector::tournament(generation& gen)
 {
     auto chromosome_index = range::distribution_of(gen);
 
-    std::vector<double> arena;
+    std::vector<int> arena;
     arena.reserve(tournament_size);
 
     auto select = [&](auto& random)
@@ -113,9 +113,12 @@ index_pair selector::tournament(generation& gen)
         arena.clear();
 
         for (int j = 0; j < tournament_size; ++j)
-            arena.push_back(gen[random(chromosome_index)].fitness);
+            arena.push_back(random(chromosome_index));
 
-        std::sort(arena.begin(), arena.end(), [](double first, double second) { return first > second; });
+        std::sort(arena.begin(), arena.end(), [&](int first, int second)
+        {
+            return gen[first].fitness > gen[second].fitness;
+        });
 
         return arena.front();
     };

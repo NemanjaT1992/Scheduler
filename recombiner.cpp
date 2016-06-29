@@ -32,9 +32,14 @@ recombiner::children_pair recombiner::operator()(chromosome &c1, chromosome &c2)
             child_2.schedule[i][j].clear();
 
             find_class_data(c2, child_1, day_1, i, j );
-
             find_class_data(c1, child_2, day_2, i, j);
+
+//            std::random_shuffle(child_1.schedule[i][j].begin(), child_1.schedule[i][j].end());
+//            std::random_shuffle(child_2.schedule[i][j].begin(), child_2.schedule[i][j].end());
         }
+
+//        std::random_shuffle(child_1.schedule.begin(), child_1.schedule.end());
+//        std::random_shuffle(child_2.schedule.begin(), child_2.schedule.end());
     }
 
      return children_pair(child_1, child_2);
