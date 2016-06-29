@@ -49,6 +49,7 @@ void MainWindow::fill_table()
                     int time = tt[k][d].time;
                     QStandardItem *data = new QStandardItem(classes.at(tt[k][d].course).name);
                     model->setItem(time,k,data);
+                    qDebug() << "row" << time << "column" << k;
                 }
             }
 //        }
