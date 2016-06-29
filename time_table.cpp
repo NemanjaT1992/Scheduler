@@ -29,6 +29,25 @@ time_table& time_table::operator=(time_table&& other)
     return *this;
 }
 
+bool time_table::operator==(time_table& other)
+{
+    for(int i = 0; i < 5; i++)
+    {
+        if(table[i].size() != other.table[i].size())
+            return false;
+        for(int j = 0; j < table.size(); ++j)
+            if(!is_equal(table[i][j], other.table[i][j]))
+                return false;
+    }
+    return true;
+
+}
+bool time_table::is_equal(class_data& d1, class_data& d2)
+{
+    return d1.course == d2.course && d1.professor == d2.professor;
+
+}
+
 time_table::value& time_table::operator[](int&& i)
 {
     return table[i];

@@ -18,20 +18,12 @@ void course_class::print()
 
 int course_class::num_of_classes()
 {
-    return num_of_students/professors.size();
+    return num_of_students / professors.size();
 }
 
-int course_class::get_professor()
+int course_class::get_professor(int i)
 {
-    int ind = 0;
-    while(!professor_available.at(ind))
-        ind++;
-    if(ind != professor_available.size())
-    {
-        professor_available[ind] = false;
-        return professors.at(ind);
-    }
-    return -1;
+    return professors[i];
 }
 
 void course_class::clear_professor_availability()

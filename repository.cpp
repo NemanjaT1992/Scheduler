@@ -76,7 +76,7 @@ bool repository::load_professors(QString fileName)
             QString line = in_stream.readLine();
             QStringList line_elements = line.split("|");
             QString classList = line_elements.at(2);
-            QStringList classes = classList.split(",");
+            QStringList classes = classList.split(",", QString::SkipEmptyParts);
             std::vector<int> classesTmp;
             for(int i=0; i<classes.length(); ++i)
                 classesTmp.push_back(classes.at(i).toInt());

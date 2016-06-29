@@ -17,7 +17,7 @@ struct course_class
     std::vector<int> professors;
     std::vector<bool> professor_available;
     int num_of_classes();
-    int get_professor();
+    int get_professor(int i);
     void clear_professor_availability();
 };
 

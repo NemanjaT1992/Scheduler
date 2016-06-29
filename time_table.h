@@ -7,22 +7,22 @@
 
 namespace constants
 {
-    constexpr int hours = 12;
+    constexpr int hours = 6;
 
     //evaluation priorities constants
-    constexpr double priority = 0.01;
+    constexpr double priority = 0.1;
 
 
 }
 
 struct class_data
 {
-    class_data(int8_t t, int8_t course, int8_t count, int8_t p)
+    class_data(int8_t t, int8_t course, int8_t count, int8_t p, int8_t s)
         :time(t)
         ,course(course)
         ,count(count)
         ,professor(p)
-//        ,student_group(s)
+        ,student_count(s)
     {
     }
 
@@ -36,7 +36,7 @@ struct class_data
     int8_t course;
     int8_t count;
     int8_t professor;
-    int8_t student_group;
+    int8_t student_count;
 };
 
 class time_table
@@ -54,6 +54,8 @@ public:
 
     time_table& operator=(const time_table& other);
     time_table& operator=(time_table&& other);
+    bool operator==(time_table& other);
+    bool is_equal(class_data& d1, class_data& d2);
 
     value& operator[](int&& i);
     value& operator[](int& i);

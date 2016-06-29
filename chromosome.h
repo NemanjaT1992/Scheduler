@@ -17,7 +17,7 @@ public:
 
     chromosome& operator=(const chromosome& other);
     chromosome& operator=(chromosome&& other);
-
+    bool operator==(chromosome& other);
     void initialize_chrom();
     void print();
 };

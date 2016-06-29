@@ -11,6 +11,7 @@ evaluator::evaluator()
 
 void evaluator::operator ()(chromosome& c)
 {
+    c.fitness = 0;
     for(int i = 0; i < c.schedule.size(); ++i)
     {
         time_table& table = c.schedule[i];
@@ -28,15 +29,16 @@ void evaluator::operator ()(chromosome& c)
                 available(c.fitness, reff_data, j);
                 room_time_overlap(c.fitness, table, reff_data, k, j);
                 professor_time_overlap(c.fitness, c, reff_data, i, j);
+                capacity(c.fitness, reff_data, room);
+                time_off_limits(c.fitness, reff_data);
 
                 // maybe will be considered depending on recombination
                  //   same_classes(eval, reff_data, j);
              //   same_time_classes(eval, table, reff_data, j);
             }
         }
-
     }
-
+   qDebug() << "fitnes : "<< c.fitness;
    max_fitness = c.fitness > max_fitness ? c.fitness : max_fitness;
 }
 void evaluator::available(double& eval, class_data& reff_data, int day_index)
@@ -48,10 +50,15 @@ void evaluator::available(double& eval, class_data& reff_data, int day_index)
     int8_t start_time = reff_data.time;
     for(int j = 0; j < availability.size(); j += 2)
     {
-        if(start_time >= availability[j] && start_time < availability[j + 1])
+        if(end_time < availability[j] || start_time > availability[j + 1])
             eval += constants::priority;
-        if(end_time > availability[j] && end_time <= availability[j + 1] )
-            eval += constants::priority;
+        else
+        {
+            if(start_time >= availability[j] && start_time < availability[j + 1])
+                eval -= constants::priority;
+            if(end_time > availability[j] && end_time <= availability[j + 1] )
+                eval -= constants::priority;
+        }
     }
 }
 void evaluator::room_time_overlap(double& eval, time_table& table, class_data& reff_data, int index, int day_index )
@@ -63,10 +70,15 @@ void evaluator::room_time_overlap(double& eval, time_table& table, class_data& r
     {
         int8_t other_start = day[i].time;
         int8_t other_end = other_start + day[i].count;
-        if(start_time >= other_start && start_time < other_end)
+        if(start_time > other_end || end_time < other_end)
             eval += constants::priority;
-        if(end_time > other_start && end_time <= other_end )
-            eval += constants::priority;
+        else
+        {
+            if(start_time >= other_start && start_time < other_end)
+                eval -= constants::priority;
+            if(end_time > other_start && end_time <= other_end )
+                eval -= constants::priority;
+        }
     }
 }
 void evaluator::professor_time_overlap(double& eval, chromosome& c, class_data& reff_data, int index, int day_index )
@@ -84,16 +96,30 @@ void evaluator::professor_time_overlap(double& eval, chromosome& c, class_data& 
                 int8_t other_end = other_start + day[i].count;
 
 
-                if(start_time >= other_start && start_time < other_end)
+                if(start_time > other_end || end_time < other_end)
                     eval += constants::priority;
-                if(end_time > other_start && end_time <= other_end )
-                    eval += constants::priority;
+                else
+                {
+                    if(start_time >= other_start && start_time < other_end)
+                        eval -= constants::priority;
+                    if(end_time > other_start && end_time <= other_end )
+                        eval -= constants::priority;
+                }
             }
         }
     }
 }
-void evaluator::capability(double& eval, class_data& data, room& room)
+void evaluator::capacity(double& eval, class_data& data, room& room)
 {
-   // if(room.seats < data.student_count)
+    if(room.seats > data.student_count)
         eval += constants::priority;
+    else
+        eval -= constants::priority;
+}
+void evaluator::time_off_limits(double& eval, class_data& data)
+{
+    if(data.time + data.count <= constants::hours)
+        eval += constants::priority;
+    else
+        eval -= constants::priority;
 }

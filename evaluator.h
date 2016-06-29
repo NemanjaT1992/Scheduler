@@ -16,7 +16,8 @@ public:
      void available(double& eval, class_data& reff_data, int day_index);
      void room_time_overlap(double& eval, time_table& table, class_data& reff_data, int index, int day_index );
      void professor_time_overlap(double& eval, chromosome& c, class_data& reff_data, int index, int day_index );
-     void capability(double& eval, class_data& data, room& room);
+     void capacity(double& eval, class_data& data, room& room);
+     void time_off_limits(double& eval, class_data& data);
 };
 
 #endif // EVALUATOR_H

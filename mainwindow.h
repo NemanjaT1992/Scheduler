@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QStandardItemModel>
 #include "chromosome.h"
-#include "genetic_algorithm.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,7 +17,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void fill_table();
-
+    void draw_chromosome(chromosome& c);
 private slots:
 
 private:

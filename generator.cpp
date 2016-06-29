@@ -31,12 +31,13 @@ generation generator::generate()
                 int8_t time = random(dis);
                 int8_t course = courses.at(i).id;
                 int8_t count = courses.at(i).fond;
-                int8_t prof = courses.at(i).get_professor();
+                int8_t prof = courses.at(i).get_professor(c);
+                int8_t student_count = courses.at(i).num_of_students /courses.at(i).professors.size() ;
 
                 dis = range::distribution_of(type::room);
                 int8_t room = random(dis);
 
-                class_data cl_data(time, course, count, prof);
+                class_data cl_data(time, course, count, prof, student_count);
 
 //                tt.push_back(day, cl_data);
                 f_generation[g].schedule[room].push_back(day, cl_data);

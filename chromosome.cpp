@@ -36,6 +36,14 @@ chromosome& chromosome::operator=(chromosome&& other)
     return *this;
 }
 
+bool chromosome::operator==(chromosome& other)
+{
+    for(int i = 0; i < schedule.size(); ++i)
+        if(!(schedule[i] == other.schedule[i]))
+            return false;
+     return true;
+}
+
 void chromosome::initialize_chrom()
 {
     time_table tt;

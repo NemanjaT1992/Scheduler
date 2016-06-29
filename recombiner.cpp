@@ -27,22 +27,24 @@ recombiner::children_pair recombiner::operator()(chromosome &c1, chromosome &c2)
         {
             std::vector<class_data> day_1 = time_table_1.get_table()[j];
             std::vector<class_data> day_2 = time_table_2.get_table()[j];
-            int size = day_1.size() > day_2.size() ? day_1.size() : day_2.size();
 
-            child_1.schedule[i].get_table()[j].clear();
-            child_2.schedule[i].get_table()[j].clear();
+            child_1.schedule[i][j].clear();
+            child_2.schedule[i][j].clear();
 
-            find_class_data(c2, child_1, day_1);
+            find_class_data(c2, child_1, day_1, i, j );
 
-            find_class_data(c1, child_2, day_2);
+            find_class_data(c1, child_2, day_2, i, j);
         }
     }
 
-    return children_pair(child_1, child_2);
+     return children_pair(child_1, child_2);
 }
 
-void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child, std::vector<class_data>& day)
+void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child, std::vector<class_data>& day
+                                 ,int parent_room, int parent_day)
 {
+    std::uniform_int_distribution<> dis(0, 100);
+
     for(int k = 0; k < day.size() ; ++k)
     {
 
@@ -66,7 +68,9 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
                 {
                     if(other_day[n].professor == reff_data.professor && other_day[n].course == reff_data.course)
                     {
-                        reff_data.time = other_day[n].time;
+                        int value = random(dis);
+                      //  if(value > 50)
+                            reff_data.time = other_day[n].time;
                         found = true;
                         break;
                     }
@@ -85,7 +89,15 @@ void recombiner::find_class_data(chromosome& reff_chromosome, chromosome& child,
         }
 
         if(found)
+        {
+//            int value = random(dis);
+//           if(value < 50)
+//               room_index = parent_room;
+//           value = random(dis);
+//           if(value < 50)
+//               day_index = parent_day;
            child.schedule[room_index].get_table()[day_index].push_back(reff_data);
+        }
     }
 }
 

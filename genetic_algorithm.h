@@ -7,6 +7,7 @@
 #include "recombiner.h"
 #include "mutator.h"
 #include "generator.h"
+#include "mainwindow.h"
 
 template<typename Iter, typename F>
 void for_each_chromosome(Iter begin, Iter end, F&& handler)
@@ -25,9 +26,10 @@ private:
     selector select;
     recombiner recombine;
     mutator mutate;
-
+    MainWindow* window;
+    double crossover_rate;
 public:
-    genetic_algorithm(int generation_size, int mutation_rate, int elitism_rate, int tournament_size);
+    genetic_algorithm(int generation_size, int mutation_rate, int elitism_rate, int tournament_size, MainWindow* m, double cr );
 
     chromosome run();
 };
