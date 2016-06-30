@@ -31,7 +31,7 @@ void evaluator::operator ()(chromosome& c)
                 room_time_overlap(c.fitness, table, reff_data, k, j);
                 professor_time_overlap(c.fitness, c, reff_data, i, j);
                 capacity(c.fitness, reff_data, room);
-                time_off_limits(c.fitness, reff_data);
+//                time_off_limits(c.fitness, reff_data);
 
                 // maybe will be considered depending on recombination
                 //   same_classes(eval, reff_data, j);
@@ -49,7 +49,6 @@ void evaluator::available(int& eval, class_data& reff_data, int day_index)
     std::vector<int> availability = get::professor_at(reff_data.professor).available[day_index];
     int8_t end_time = reff_data.time + reff_data.count;
     int8_t start_time = reff_data.time;
-    bool satisfy = true;
     for(int j = 0; j < availability.size(); j += 2)
         if((end_time <= availability[j + 1] && end_time > availability[j])
                 || (start_time < availability[j + 1] && start_time >= availability[j])

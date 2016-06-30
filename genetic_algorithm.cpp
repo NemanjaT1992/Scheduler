@@ -17,10 +17,15 @@ chromosome genetic_algorithm::run()
 
 
     int  i = 0;
+    int prev_max = 0;
+    int gen_counter = 0;
 
-    while (evaluate.max_fitness < 105)
+    while (evaluate.max_fitness < 84)
     {
         qDebug () << "max fitness: " << evaluate.max_fitness;
+
+        if (evaluate.max_fitness == 83)
+            int x = 5;
 
         evaluate.max_fitness = 0;
         generation next_gen = std::move(select.elitism(gen));
@@ -48,6 +53,34 @@ chromosome genetic_algorithm::run()
         gen = std::move(next_gen);
         i++;
         qDebug() << "generation: " << i;
+
+        if(prev_max == evaluate.max_fitness)
+            ++gen_counter;
+        else
+        {
+            gen_counter = 0;
+            prev_max = evaluate.max_fitness;
+        }
+
+        if (gen_counter == 2000)
+        {
+            for_each_chromosome(gen.begin(), gen.end(), [this](auto& c)
+            {
+                mutate.mutate_time(c);
+
+                for (int i = 0; i < c.schedule.size(); ++i)
+                        std::random_shuffle(c.schedule[i].begin(), c.schedule[i].end());
+
+                std::random_shuffle(c.schedule.begin(), c.schedule.end());
+
+//                mutate.mutate_day(c);
+//                mutate.mutate_time(c);
+//                mutate.swap_rooms(c);
+//                mutate.swap_days(c);
+            });
+
+            gen_counter = 0;
+        }
     }
 
 //    int x = 5;
