@@ -48,6 +48,40 @@ void MainWindow::draw_chromosome(chromosome &chrom)
     }
 }
 
+void MainWindow::draw_chromosome_by_time(chromosome &chrom)
+{
+    std::vector<course_class> classes = get::courses();
+
+    for(int i=0; i<chrom.schedule.size(); ++i)
+    {
+        time_table tt = chrom.schedule.at(i);
+        for(int k=0; k < tt.size(); ++k)
+        {
+//            qDebug() << "time_table size:" << tt[k].size();
+            for(int d=0; d<tt[k].size(); ++d)
+            {
+                QString day_data = "";
+                class_data single = tt[k][d];
+
+                day_data.append("(" + QString::number(i) + ") " + QString(get::professor_at(single.professor).name) + " " +
+                                QString(classes.at(single.course).name)+ " "
+                                + QString::number(single.count));
+
+                QStandardItem *data = new QStandardItem(day_data);
+//                qDebug() << single.count;
+                model->setItem(single.time, k, data);
+
+
+                for(int countClass = 1; countClass < single.count; ++countClass)
+                {
+                    QStandardItem *data1 = new QStandardItem("/");
+                    model->setItem(single.time + countClass, k, data1);
+                }
+            }
+        }
+    }
+}
+
 void MainWindow::fill_table()
 {
     std::vector<course_class> classes = get::courses();
@@ -60,25 +94,26 @@ void MainWindow::fill_table()
 //    generation gener = m_generator.generate();
 //    auto& chrom = gener.at(0);
 
-    for(int i=0; i<chrom.schedule.size(); ++i)
-    {
-        time_table tt = chrom.schedule.at(i);
-//        for(int j=0; j<tt.size(); ++j)
-//        {
-            for(int k=0; k < tt.size(); ++k)
-            {
-                int day = k;
-                QString& day_data = QString::number(tt[k].size());
-                for(int d=0; d<tt[k].size(); ++d)
-                {
-                    class_data single = tt[k][d];
-                    day_data.append(QString(classes.at(single.course).name) + " " + QString(get::professor_at(single.professor).name)
-                                    + " " + QString::number(single.time) + " + " + QString::number(single.count) + "  ||  ");
+//    for(int i=0; i<chrom.schedule.size(); ++i)
+//    {
+//        time_table tt = chrom.schedule.at(i);
+////        for(int j=0; j<tt.size(); ++j)
+////        {
+//            for(int k=0; k < tt.size(); ++k)
+//            {
+//                int day = k;
+//                QString& day_data = QString::number(tt[k].size());
+//                for(int d=0; d<tt[k].size(); ++d)
+//                {
+//                    class_data single = tt[k][d];
+//                    day_data.append(QString(classes.at(single.course).name) + " " + QString(get::professor_at(single.professor).name)
+//                                    + " " + QString::number(single.time) + " + " + QString::number(single.count) + "  ||  ");
 
-                }
-                QStandardItem *data = new QStandardItem(day_data);
-                model->setItem(i,k,data);
-            }
-//        }
-    }
+//                }
+//                QStandardItem *data = new QStandardItem(day_data);
+//                model->setItem(i,k,data);
+//            }
+////        }
+//    }
+    draw_chromosome_by_time(chrom);
 }

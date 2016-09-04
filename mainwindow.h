@@ -18,6 +18,7 @@ public:
     ~MainWindow();
     void fill_table();
     void draw_chromosome(chromosome& c);
+    void draw_chromosome_by_time(chromosome& chrom);
 private slots:
 
 private:
