@@ -52,7 +52,8 @@ void MainWindow::fill_table()
 {
     std::vector<course_class> classes = get::courses();
 
-    genetic_algorithm algorithm(50, 30, 2, 5, this, 0.8);
+    //generation_size, mutation_rate, elitism_rate, tournament_size, main_window, crossover_rate
+    genetic_algorithm algorithm(100, 3, 1, 5, this, 0.8);
 
     chromosome chrom = algorithm.run();
 

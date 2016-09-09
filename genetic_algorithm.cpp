@@ -18,7 +18,7 @@ chromosome genetic_algorithm::run()
 
     int  i = 0;
 
-    while (evaluate.max_fitness < 105)
+    while (evaluate.max_fitness < 84)
     {
         qDebug () << "max fitness: " << evaluate.max_fitness;
 
@@ -35,11 +35,22 @@ chromosome genetic_algorithm::run()
         }
         while (next_gen.size() < generation_size)
         {
-            index_pair parents = select.ranking(gen);
-            recombiner::children_pair children = recombine(gen[parents.first], gen[parents.second]);
+            if(i % 4000 == 0)
+            {
+                chromosome c;
+                c.set();
+               next_gen.push_back(c);
+               c.print();
 
-            next_gen.push_back(std::move(children.first));
-            next_gen.push_back(std::move(children.second));
+            }
+            else
+            {
+                index_pair parents = select.ranking(gen);
+                recombiner::children_pair children = recombine(gen[parents.first], gen[parents.second]);
+
+                next_gen.push_back(std::move(children.first));
+                next_gen.push_back(std::move(children.second));
+            }
         }
 
         for_each_chromosome(next_gen.begin() + select.elitism_rate, next_gen.end(), mutate);

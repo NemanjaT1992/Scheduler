@@ -16,10 +16,10 @@ generation generator::generate()
 
     for(int g=0; g<generation_length; ++g)
     {
-        f_generation[g].initialize_chrom();
+       // f_generation[g].set();
         for(int j=0; j<courses.size(); ++j)
             courses[j].clear_professor_availability();
-//        time_table tt;
+        time_table tt;
 
         for(int i=0; i<courses.size(); ++i)
         {
@@ -39,7 +39,7 @@ generation generator::generate()
 
                 class_data cl_data(time, course, count, prof, student_count);
 
-//                tt.push_back(day, cl_data);
+                tt.push_back(day, cl_data);
 
                 f_generation[g].schedule[room].push_back(day, cl_data);
             }
@@ -47,7 +47,7 @@ generation generator::generate()
         qDebug() << "---------------------------------------------------chromosome" << g;
         f_generation[g].print();
 
-//        tt.print();
+        tt.print();
     }
 
     return f_generation;
